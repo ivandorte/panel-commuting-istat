@@ -1,9 +1,13 @@
 # :watermelon: Commuting flows between Italian Regions
 
+![img](https://raw.githubusercontent.com/ivandorte/panel-commuting-istat/main/images/dashboard.png)
+
 [![License: CC BY-SA 4.0](https://img.shields.io/badge/License-CC%20BY--SA%204.0-lightgrey.svg)](https://creativecommons.org/licenses/by/4.0/)
 
-### Link:
+### Links:
 https://ivandorte.github.io/panel-commuting-istat/commuting2011/app.html
+
+https://sharing.awesome-panel.org/ivandorte/panel-commuting-istat/app.html
 
 A Panel dashboard showing ***Incoming*** and ***Outgoing*** commuting flows for ***Work*** and ***Study*** between Italian Regions.
 
@@ -14,11 +18,7 @@ The dashboard includes:
 - Two bar plots showing the number of ***Incoming*** and ***Outgoing*** commuters by Region for the selected parameters;
 
 - 3 numeric indicators: ***Incoming*** commuters, ***Outgoing*** commuters, ***Internal*** Commuters for the selected parameters;
-
-### Screenshots:
-
-![img](https://raw.githubusercontent.com/ivandorte/panel-commuting-istat/main/images/dashboard.png)
-    
+ 
 ### Data
 
 - Commuting data: [Matrici del Pendolarismo (Istat, 2011)](https://www.istat.it/it/archivio/139381)
