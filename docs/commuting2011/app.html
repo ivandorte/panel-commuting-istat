@@ -1,0 +1,392 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>Commuting flows between Italian Regions</title>
+<link rel="icon" href="https://panel.holoviz.org/_static/icons/favicon.ico" type=""><meta name="name" content="Commuting flows between Italian Regions">    <link rel="stylesheet" href="https://cdn.holoviz.org/panel/0.14.0/dist/css/card.css" type="text/css" />
+    <link rel="stylesheet" href="https://cdn.holoviz.org/panel/0.14.0/dist/css/widgets.css" type="text/css" />
+    <link rel="stylesheet" href="https://cdn.holoviz.org/panel/0.14.0/dist/css/loading.css" type="text/css" />
+    <link rel="stylesheet" href="https://cdn.holoviz.org/panel/0.14.0/dist/css/markdown.css" type="text/css" />
+    <link rel="stylesheet" href="https://cdn.holoviz.org/panel/0.14.0/dist/css/json.css" type="text/css" />
+    <link rel="stylesheet" href="https://cdn.holoviz.org/panel/0.14.0/dist/css/dataframe.css" type="text/css" />
+    <link rel="stylesheet" href="https://cdn.holoviz.org/panel/0.14.0/dist/css/debugger.css" type="text/css" />
+    <link rel="stylesheet" href="https://cdn.holoviz.org/panel/0.14.0/dist/css/alerts.css" type="text/css" />
+    <style>
+        
+    .bk.pn-loading.arc:before {
+      background-image: url("data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHN0eWxlPSJtYXJnaW46IGF1dG87IGJhY2tncm91bmQ6IG5vbmU7IGRpc3BsYXk6IGJsb2NrOyBzaGFwZS1yZW5kZXJpbmc6IGF1dG87IiB2aWV3Qm94PSIwIDAgMTAwIDEwMCIgcHJlc2VydmVBc3BlY3RSYXRpbz0ieE1pZFlNaWQiPiAgPGNpcmNsZSBjeD0iNTAiIGN5PSI1MCIgZmlsbD0ibm9uZSIgc3Ryb2tlPSIjYzNjM2MzIiBzdHJva2Utd2lkdGg9IjEwIiByPSIzNSIgc3Ryb2tlLWRhc2hhcnJheT0iMTY0LjkzMzYxNDMxMzQ2NDE1IDU2Ljk3Nzg3MTQzNzgyMTM4Ij4gICAgPGFuaW1hdGVUcmFuc2Zvcm0gYXR0cmlidXRlTmFtZT0idHJhbnNmb3JtIiB0eXBlPSJyb3RhdGUiIHJlcGVhdENvdW50PSJpbmRlZmluaXRlIiBkdXI9IjFzIiB2YWx1ZXM9IjAgNTAgNTA7MzYwIDUwIDUwIiBrZXlUaW1lcz0iMDsxIj48L2FuaW1hdGVUcmFuc2Zvcm0+ICA8L2NpcmNsZT48L3N2Zz4=");
+      background-size: auto calc(min(50%, 400px));
+    }
+    
+    </style>
+<script type="text/javascript" src="https://cdn.bokeh.org/bokeh/release/bokeh-2.4.3.min.js"></script><script type="text/javascript" src="https://cdn.bokeh.org/bokeh/release/bokeh-gl-2.4.3.min.js"></script><script type="text/javascript" src="https://cdn.bokeh.org/bokeh/release/bokeh-widgets-2.4.3.min.js"></script><script type="text/javascript" src="https://cdn.bokeh.org/bokeh/release/bokeh-tables-2.4.3.min.js"></script><script type="text/javascript" src="https://cdn.holoviz.org/panel/0.14.0/dist/panel.min.js"></script><script type="text/javascript">
+    Bokeh.set_log_level("info");
+</script><!-- Template CSS -->
+<link rel="stylesheet" href="https://cdn.holoviz.org/panel/0.14.0/dist/bundled/fastbasetemplate/fast_root.css">
+<link rel="stylesheet" href="https://cdn.holoviz.org/panel/0.14.0/dist/bundled/fastbasetemplate/fast_bokeh.css">
+<link rel="stylesheet" href="https://cdn.holoviz.org/panel/0.14.0/dist/bundled/fastbasetemplate/fast_bokeh_slickgrid.css">
+<link rel="stylesheet" href="https://cdn.holoviz.org/panel/0.14.0/dist/bundled/fastbasetemplate/fast_panel.css">
+<link rel="stylesheet" href="https://cdn.holoviz.org/panel/0.14.0/dist/bundled/fastbasetemplate/fast_panel_dataframe.css">
+<link rel="stylesheet" href="https://cdn.holoviz.org/panel/0.14.0/dist/bundled/fastbasetemplate/fast_panel_widgets.css">
+<link rel="stylesheet" href="https://cdn.holoviz.org/panel/0.14.0/dist/bundled/fastbasetemplate/fast_panel_markdown.css">
+<link rel="stylesheet" href="https://cdn.holoviz.org/panel/0.14.0/dist/bundled/fastbasetemplate/fast_awesome.css">
+<link rel="stylesheet" href="https://cdn.holoviz.org/panel/0.14.0/dist/bundled/fastlisttemplate/fast_list_template.css">
+<link rel="stylesheet" href="https://cdn.holoviz.org/panel/0.14.0/dist/bundled/fastdefaulttheme/fast_root_default.css">
+<link rel="stylesheet" href="https://cdn.holoviz.org/panel/0.14.0/dist/bundled/fastlisttemplate/default.css">
+<link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Open+Sans" />
+
+<style>
+  :root {
+    --body-font: Open Sans, sans-serif;
+  }
+  body {
+    color: #00aa41;
+    background-color: #ffffff;
+    font-family: var(--body-font);
+  }
+  #header a {
+    color: currentColor;
+  }
+  #header-design-provider {
+    --neutral-foreground-rest: #ffffff;
+  }
+  #sidebar {
+    width: 330px;
+  }
+  #header {
+      box-shadow: 2px 2px 10px silver;
+  }
+  #sidebar {
+      box-shadow: 2px 2px 10px silver;
+  }
+</style>
+
+<!-- Template JS -->
+<script src="https://cdn.holoviz.org/panel/0.14.0/dist/bundled/fastbasetemplate/fast_template.js"></script>
+<script src="https://cdn.holoviz.org/panel/0.14.0/dist/bundled/js/@microsoft/fast-colors@5.3.1/dist/index.js" type="module"></script>
+<script src="https://cdn.holoviz.org/panel/0.14.0/dist/bundled/js/@microsoft/fast-components@1.21.8/dist/fast-components.js" type="module"></script>
+
+<!-- Fast Script -->
+<script type="module">
+  import { parseColorHexRGB } from "https://cdn.holoviz.org/panel/0.14.0/dist/bundled/js/@microsoft/fast-colors@5.3.1/dist/index.js";
+  import {
+    createColorPalette,
+    accentFillActiveBehavior,
+    accentFillHoverBehavior,
+    accentFillRestBehavior,
+    accentForegroundActiveBehavior,
+    accentForegroundCutRestBehavior,
+    accentForegroundFocusBehavior,
+    accentForegroundHoverBehavior,
+    accentForegroundRestBehavior,
+    neutralDividerRestBehavior,
+    neutralFillHoverBehavior,
+    neutralFillInputActiveBehavior,
+    neutralFillInputHoverBehavior,
+    neutralFillInputRestBehavior,
+    neutralFillRestBehavior,
+    neutralFillStealthActiveBehavior,
+    neutralFillStealthHoverBehavior,
+    neutralFillStealthRestBehavior,
+    neutralFocusBehavior,
+    neutralFocusInnerAccentBehavior,
+    neutralForegroundActiveBehavior,
+    neutralForegroundHoverBehavior,
+    neutralLayerFloatingBehavior,
+    neutralOutlineActiveBehavior,
+    neutralOutlineHoverBehavior,
+    neutralOutlineRestBehavior
+  } from "https://cdn.holoviz.org/panel/0.14.0/dist/bundled/js/@microsoft/fast-components@1.21.8/dist/fast-components.js";
+
+  function standardize_color(str){
+    var ctx = document.createElement('canvas').getContext('2d');
+    ctx.fillStyle = str;
+    return ctx.fillStyle;
+  }
+
+  function setAccentColor(color, selector){
+      color = standardize_color(color);
+      const accent = color;
+      const palette = createColorPalette(parseColorHexRGB(accent));
+      const provider = document.querySelector(selector);
+      provider.accentBaseColor = accent;
+      provider.accentPalette = palette;
+  }
+  setAccentColor("#0072B5", "#body-design-provider");
+  setAccentColor("#ffffff", "#header-design-provider");
+
+  function setNeutralColor(color, selector){
+      color = standardize_color(color);
+      const palette = createColorPalette(parseColorHexRGB(color));
+      const provider = document.querySelector(selector);
+
+      provider.neutralPalette = palette;
+  }
+  setNeutralColor("#ffffff", "#header-design-provider");
+  setNeutralColor("#000000", "#body-design-provider");
+
+  function setBackgroundColor(color, selector){
+    color = standardize_color(color);
+    const provider = document.querySelector(selector);
+    provider.backgroundColor=color;
+  }
+  setBackgroundColor("#2F4F4F", "#header-design-provider");
+  setBackgroundColor("#ffffff", "#body-design-provider");
+
+  document.querySelector("#body-design-provider").cornerRadius=3;
+
+  function registerCSSCustomProperties(selector)  {
+    const provider = document.querySelector(selector);
+    provider.registerCSSCustomProperty(accentFillActiveBehavior)
+    provider.registerCSSCustomProperty(neutralFillRestBehavior)
+    provider.registerCSSCustomProperty(accentFillHoverBehavior)
+    provider.registerCSSCustomProperty(accentFillRestBehavior)
+    provider.registerCSSCustomProperty(accentForegroundActiveBehavior)
+    provider.registerCSSCustomProperty(accentForegroundCutRestBehavior)
+    provider.registerCSSCustomProperty(accentForegroundFocusBehavior)
+    provider.registerCSSCustomProperty(accentForegroundHoverBehavior)
+    provider.registerCSSCustomProperty(accentForegroundRestBehavior)
+    provider.registerCSSCustomProperty(neutralDividerRestBehavior)
+    provider.registerCSSCustomProperty(neutralFillHoverBehavior)
+    provider.registerCSSCustomProperty(neutralFillInputActiveBehavior)
+    provider.registerCSSCustomProperty(neutralFillInputHoverBehavior)
+    provider.registerCSSCustomProperty(neutralFillInputRestBehavior)
+    provider.registerCSSCustomProperty(neutralFillRestBehavior)
+    provider.registerCSSCustomProperty(neutralFillStealthActiveBehavior)
+    provider.registerCSSCustomProperty(neutralFillStealthHoverBehavior)
+    provider.registerCSSCustomProperty(neutralFillStealthRestBehavior)
+    provider.registerCSSCustomProperty(neutralFocusBehavior)
+    provider.registerCSSCustomProperty(neutralFocusInnerAccentBehavior)
+    provider.registerCSSCustomProperty(neutralForegroundActiveBehavior)
+    provider.registerCSSCustomProperty(neutralForegroundHoverBehavior)
+    provider.registerCSSCustomProperty(neutralLayerFloatingBehavior)
+    provider.registerCSSCustomProperty(neutralOutlineActiveBehavior)
+    provider.registerCSSCustomProperty(neutralOutlineHoverBehavior)
+    provider.registerCSSCustomProperty(neutralOutlineRestBehavior)
+  }
+  registerCSSCustomProperties("#header-design-provider")
+  registerCSSCustomProperties("#body-design-provider")
+
+  class FastDesignProvider {
+    setAccentColor(value, element){
+      setAccentColor(value, element);
+    }
+    setNeutralColor(value, element){
+      setNeutralColor(value, element);
+    }
+    setBackgroundColor(value, element){
+      setBackgroundColor(value, element)
+    }
+  }
+  window.fastDesignProvider = new FastDesignProvider()
+</script>
+  </head>
+  <body class="bk pn-loading arc">
+<fast-design-system-provider id="body-design-provider" use-defaults accent-foreground-cut-rest="#FFFFFF"
+background-color="#ffffff"accent-base-color="#0072B5"  >
+  <div id="container">
+  <fast-design-system-provider id="header-design-provider"
+background-color="#2F4F4F"  >
+  <nav id="header">
+    <div class="app-header">
+<a class="title" href="/" >&nbsp;Panel</a><span class="title">-</span><a class="title" href="" >Commuting flows between Italian Regions</a>    </div>
+    <div id="header-items">
+  </div>
+	<div class="pn-busy-container" id="busy-container">
+	  <div class="bk-root" id="ac8d827a-3bff-4b47-adfd-cdbb56baa75a" data-root-id="1010"></div>
+	</div>
+  <fast-tooltip anchor="busy-container" position="left">
+    Busy Indicator
+  </fast-tooltip>
+
+  </nav>
+  </fast-design-system-provider>
+
+  <div class="row" id="content">
+
+    <div class="main" id="main"
+    style="margin-left: 0px;"
+    >
+      <div class="card-margin">
+<fast-card class="pn-wrapper">        <span class="fullscreen-button" onclick="toggleFullScreen(this)">
+          <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 18 18"><path d="M4.5 11H3v4h4v-1.5H4.5V11zM3 7h1.5V4.5H7V3H3v4zm10.5 6.5H11V15h4v-4h-1.5v2.5zM11 3v1.5h2.5V7H15V3h-4z"/></svg>
+        </span>
+        <div class="bk-root" id="6ef78c07-6fd4-4a8b-8064-9083527b1b7b" data-root-id="1011"></div>
+</fast-card>      </div>
+
+      <fast-dialog id="pn-Modal" hidden style="--dialog-width: 80%; --dialog-height: auto; --background-color: var(--neutral-layer-floating);">
+        <fast-button class="pn-modal-close" id="pn-closeModal">&times;</fast-button>
+	<div>
+	</div>
+      </fast-dialog>
+  </div>
+  </div>
+</div>
+</fast-design-system-provider>
+<script>
+  
+</script>
+<script>
+  function openNav() {
+    document.getElementById("sidebar").style.left = 0;
+    document.getElementById("main").style.marginLeft = "360px";
+    document.getElementById("sidebar-button").onclick = closeNav;
+    var interval = setInterval(function () { window.dispatchEvent(new Event('resize')); }, 10);
+    setTimeout(function () { clearInterval(interval) }, 210)
+  }
+
+  function closeNav() {
+    document.getElementById("sidebar").style.left = "-360px";
+    document.getElementById("main").style.marginLeft = 0;
+    document.getElementById("sidebar-button").onclick = openNav;
+    var interval = setInterval(function () { window.dispatchEvent(new Event('resize')); }, 10);
+    setTimeout(function () { clearInterval(interval) }, 210)
+  }
+
+  var modal = document.getElementById("pn-Modal");
+  var span = document.getElementById("pn-closeModal");
+
+  span.onclick = function() {
+    modal.style.display = "none";
+  }
+
+  window.onclick = function(event) {
+    if (event.target == modal) {
+      modal.style.display = "none";
+    }
+  }
+</script>
+
+<div class="bk-root" id="73efdff6-f827-487d-9573-6b72bea1e16d" data-root-id="1007"></div>
+<div class="bk-root" id="89e75a44-b663-44aa-a97a-7f22b14f2170" data-root-id="1009"></div>
+<div class="bk-root" id="b8dfe4d4-afa0-4a71-b415-f14666c3804d" data-root-id="1005"></div>
+
+  
+    <script type="text/javascript">
+      const pyodideWorker = new Worker("./app.js");
+      pyodideWorker.busy = false
+      pyodideWorker.queue = []
+      
+      function send_change(jsdoc, event) {
+        if (event.setter_id != null && event.setter_id == 'py') {
+          return
+        } else if (pyodideWorker.busy && event.model && event.attr) {
+          let events = []
+          for (const old_event of pyodideWorker.queue) {
+            if (!(old_event.model === event.model && old_event.attr === event.attr)) {
+              events.push(old_event)
+            }
+          }
+          events.push(event)
+          pyodideWorker.queue = events
+          return
+        }
+        const patch = jsdoc.create_json_patch_string([event])
+        pyodideWorker.busy = true
+        pyodideWorker.postMessage({type: 'patch', patch: patch})
+      }
+      
+      pyodideWorker.onmessage = async (event) => {
+        const msg = event.data
+      
+        const body = document.getElementsByTagName('body')[0]
+        const loading_msgs = document.getElementsByClassName('pn-loading-msg')
+        if (msg.type === 'idle') {
+          if (pyodideWorker.queue.length) {
+            const patch = pyodideWorker.jsdoc.create_json_patch_string(pyodideWorker.queue)
+            pyodideWorker.busy = true
+            pyodideWorker.queue = []
+            pyodideWorker.postMessage({type: 'patch', patch: patch})
+          } else {
+            pyodideWorker.busy = false
+          }
+        } else if (msg.type === 'status') {
+          let loading_msg
+          if (loading_msgs.length) {
+            loading_msg = loading_msgs[0]
+          } else if (body.classList.contains('pn-loading')) {
+            loading_msg = document.createElement('div')
+            loading_msg.classList.add('pn-loading-msg')
+            body.appendChild(loading_msg)
+          }
+          if (loading_msg != null) {
+            loading_msg.innerHTML = msg.msg
+          }
+        } else if (msg.type === 'render') {
+          const docs_json = JSON.parse(msg.docs_json)
+          const render_items = JSON.parse(msg.render_items)
+          const root_ids = JSON.parse(msg.root_ids)
+      
+          // Remap roots in message to element IDs
+          const root_els = document.getElementsByClassName('bk-root')
+          const data_roots = []
+          for (const el of root_els) {
+             el.innerHTML = ''
+             data_roots.push([parseInt(el.getAttribute('data-root-id')), el.id])
+          }
+          data_roots.sort((a, b) => a[0]<b[0] ? -1: 1)
+          const roots = {}
+          for (let i=0; i<data_roots.length; i++) {
+            roots[root_ids[i]] = data_roots[i][1]
+          }
+          render_items[0]['roots'] = roots
+          render_items[0]['root_ids'] = root_ids
+      
+          // Embed content
+          const [views] = await Bokeh.embed.embed_items(docs_json, render_items)
+      
+          // Remove loading spinner and message
+          body.classList.remove("bk", "pn-loading", "arc")
+          for (const loading_msg of loading_msgs) {
+            loading_msg.remove()
+          }
+      
+          // Setup bi-directional syncing
+          pyodideWorker.jsdoc = jsdoc = views[0].model.document
+          jsdoc.on_change(send_change.bind(null, jsdoc), false)
+          pyodideWorker.postMessage({'type': 'rendered'})
+          pyodideWorker.postMessage({'type': 'location', location: JSON.stringify(window.location)})
+        } else if (msg.type === 'patch') {
+          pyodideWorker.jsdoc.apply_json_patch(JSON.parse(msg.patch), msg.buffers, setter_id='py')
+        }
+      };
+    </script>
+    <script type="application/json" id="1396">
+      {"85809138-9a7c-4b68-876b-23b098725dc8":{"defs":[{"extends":null,"module":null,"name":"ReactiveHTML1","overrides":[],"properties":[]},{"extends":null,"module":null,"name":"FlexBox1","overrides":[],"properties":[{"default":"flex-start","kind":null,"name":"align_content"},{"default":"flex-start","kind":null,"name":"align_items"},{"default":"row","kind":null,"name":"flex_direction"},{"default":"wrap","kind":null,"name":"flex_wrap"},{"default":"flex-start","kind":null,"name":"justify_content"}]},{"extends":null,"module":null,"name":"GridStack1","overrides":[],"properties":[{"default":"warn","kind":null,"name":"mode"},{"default":null,"kind":null,"name":"ncols"},{"default":null,"kind":null,"name":"nrows"},{"default":true,"kind":null,"name":"allow_resize"},{"default":true,"kind":null,"name":"allow_drag"},{"default":[],"kind":null,"name":"state"}]},{"extends":null,"module":null,"name":"click1","overrides":[],"properties":[{"default":"","kind":null,"name":"terminal_output"},{"default":"","kind":null,"name":"debug_name"},{"default":0,"kind":null,"name":"clears"}]},{"extends":null,"module":null,"name":"NotificationAreaBase1","overrides":[],"properties":[{"default":"bottom-right","kind":null,"name":"position"},{"default":0,"kind":null,"name":"_clear"}]},{"extends":null,"module":null,"name":"NotificationArea1","overrides":[],"properties":[{"default":[],"kind":null,"name":"notifications"},{"default":"bottom-right","kind":null,"name":"position"},{"default":0,"kind":null,"name":"_clear"},{"default":[{"background":"#ffc107","icon":{"className":"fas fa-exclamation-triangle","color":"white","tagName":"i"},"type":"warning"},{"background":"#007bff","icon":{"className":"fas fa-info-circle","color":"white","tagName":"i"},"type":"info"}],"kind":null,"name":"types"}]},{"extends":null,"module":null,"name":"Notification","overrides":[],"properties":[{"default":null,"kind":null,"name":"background"},{"default":3000,"kind":null,"name":"duration"},{"default":null,"kind":null,"name":"icon"},{"default":"","kind":null,"name":"message"},{"default":null,"kind":null,"name":"notification_type"},{"default":false,"kind":null,"name":"_destroyed"}]},{"extends":null,"module":null,"name":"TemplateActions1","overrides":[],"properties":[{"default":0,"kind":null,"name":"open_modal"},{"default":0,"kind":null,"name":"close_modal"}]},{"extends":null,"module":null,"name":"MaterialTemplateActions1","overrides":[],"properties":[{"default":0,"kind":null,"name":"open_modal"},{"default":0,"kind":null,"name":"close_modal"}]}],"roots":{"references":[{"attributes":{"name":"TemplateActions00953"},"id":"1008","type":"TemplateActions1"},{"attributes":{},"id":"1227","type":"CategoricalScale"},{"attributes":{"fill_color":{"value":"limegreen"},"hatch_color":{"value":"white"},"marker":{"field":"node_marker"},"size":{"field":"node_size"}},"id":"1125","type":"Scatter"},{"attributes":{"dimension":"lon"},"id":"1056","type":"MercatorTicker"},{"attributes":{"fill_alpha":{"value":0.7},"fill_color":{"value":"#006C97"},"hatch_alpha":{"value":0.1},"hatch_color":{"value":"#006C97"},"line_alpha":{"value":0.7},"line_color":"rgba(0, 0, 0, 0)","top":{"field":"commuters"},"width":{"value":0.8},"x":{"field":"den_reg_o"}},"id":"1197","type":"VBar"},{"attributes":{"coordinates":null,"edge_renderer":{"id":"1134"},"group":null,"inspection_policy":{"id":"1147"},"layout_provider":{"id":"1122"},"node_renderer":{"id":"1127"},"selection_policy":{"id":"1145"}},"id":"1136","type":"GraphRenderer"},{"attributes":{"factors":["Marche","Lazio","Molise","Campania","Toscana","Umbria","Puglia","Emilia-Romagna","Basilicata","Lombardia","Calabria"],"tags":[[["den_reg_d","den_reg_d",null]]]},"id":"1219","type":"FactorRange"},{"attributes":{},"id":"1215","type":"UnionRenderers"},{"attributes":{"line_alpha":{"value":1.0},"line_cap":{"value":"butt"},"line_color":{"value":"#2F4F4F"},"line_dash":{"value":[]},"line_dash_offset":{"value":0},"line_join":{"value":"bevel"},"line_width":{"value":1.5},"xs":{"field":"xs"},"ys":{"field":"ys"}},"id":"1119","type":"MultiLine"},{"attributes":{},"id":"1155","type":"UnionRenderers"},{"attributes":{},"id":"1156","type":"Selection"},{"attributes":{"dimension":"lon"},"id":"1057","type":"MercatorTickFormatter"},{"attributes":{"line_alpha":{"value":0.2},"line_color":{"value":"#2F4F4F"},"line_width":{"value":1.5},"xs":{"field":"xs"},"ys":{"field":"ys"}},"id":"1116","type":"MultiLine"},{"attributes":{"end":0.0,"reset_end":0.0,"reset_start":5370.1,"start":5370.1,"tags":[[["commuters","commuters",null]]]},"id":"1220","type":"Range1d"},{"attributes":{},"id":"1229","type":"LinearScale"},{"attributes":{},"id":"1194","type":"Selection"},{"attributes":{"background_fill_color":"#ffffff","below":[{"id":"1231"}],"border_fill_alpha":0,"border_fill_color":"#F7F7F7","center":[{"id":"1233"},{"id":"1237"}],"height":300,"left":[{"id":"1234"}],"margin":[5,5,5,5],"min_border_bottom":10,"min_border_left":10,"min_border_right":10,"min_border_top":10,"outline_line_alpha":0.5,"outline_line_color":"#888888","outline_line_width":1,"renderers":[{"id":"1257"}],"sizing_mode":"stretch_both","title":{"id":"1223"},"toolbar":{"id":"1244"},"width":300,"x_range":{"id":"1219"},"x_scale":{"id":"1227"},"y_range":{"id":"1220"},"y_scale":{"id":"1229"}},"id":"1222","subtype":"Figure","type":"Plot"},{"attributes":{},"id":"1204","type":"AllLabels"},{"attributes":{"axis_label":"","axis_label_standoff":10,"axis_label_text_color":"#2B2B2B","axis_label_text_font":"Open Sans, sans-serif","axis_label_text_font_size":"1.25em","axis_label_text_font_style":"normal","axis_line_alpha":0.1,"axis_line_color":"#2B2B2B","coordinates":null,"formatter":{"id":"1261"},"group":null,"major_label_policy":{"id":"1262"},"major_label_text_color":"#2B2B2B","major_label_text_font":"Open Sans, sans-serif","major_label_text_font_size":"0pt","major_tick_line_alpha":0.5,"major_tick_line_color":null,"minor_tick_line_alpha":0.25,"minor_tick_line_color":null,"ticker":{"id":"1232"}},"id":"1231","type":"CategoricalAxis"},{"attributes":{"fill_alpha":{"value":0.7},"fill_color":{"value":"#006C97"},"hatch_alpha":{"value":0.7},"hatch_color":{"value":"#006C97"},"line_alpha":{"value":0.7},"line_color":"rgba(0, 0, 0, 0)","top":{"field":"commuters"},"width":{"value":0.8},"x":{"field":"den_reg_o"}},"id":"1196","type":"VBar"},{"attributes":{"coordinates":null,"data_source":{"id":"1111"},"glyph":{"id":"1114"},"group":null,"hover_glyph":null,"muted_glyph":{"id":"1116"},"nonselection_glyph":{"id":"1115"},"selection_glyph":{"id":"1119"},"view":{"id":"1118"}},"id":"1117","type":"GlyphRenderer"},{"attributes":{},"id":"1152","type":"UnionRenderers"},{"attributes":{"callback":null,"renderers":[{"id":"1257"}],"tooltips":[["Region","@den_reg_d"],["Commuters","@commuters"]]},"id":"1221","type":"HoverTool"},{"attributes":{"source":{"id":"1193"}},"id":"1200","type":"CDSView"},{"attributes":{},"id":"1061","type":"AllLabels"},{"attributes":{"axis":{"id":"1231"},"coordinates":null,"grid_line_alpha":0.25,"grid_line_color":null,"group":null,"ticker":null},"id":"1233","type":"Grid"},{"attributes":{"fill_alpha":{"value":0.2},"fill_color":{"value":"#006C97"},"hatch_alpha":{"value":0.2},"hatch_color":{"value":"#006C97"},"line_alpha":{"value":0.2},"line_color":"rgba(0, 0, 0, 0)","top":{"field":"commuters"},"width":{"value":0.8},"x":{"field":"den_reg_o"}},"id":"1198","type":"VBar"},{"attributes":{"axis_label":"Commuters","axis_label_standoff":10,"axis_label_text_color":"#2B2B2B","axis_label_text_font":"Open Sans, sans-serif","axis_label_text_font_size":"1.25em","axis_label_text_font_style":"normal","axis_line_alpha":0.1,"axis_line_color":"#2B2B2B","coordinates":null,"formatter":{"id":"1264"},"group":null,"major_label_policy":{"id":"1265"},"major_label_text_color":"#2B2B2B","major_label_text_font":"Open Sans, sans-serif","major_tick_line_alpha":0.5,"major_tick_line_color":"#2B2B2B","minor_tick_line_alpha":0.25,"minor_tick_line_color":"#2B2B2B","ticker":{"id":"1235"}},"id":"1234","type":"LinearAxis"},{"attributes":{"source":{"id":"1111"}},"id":"1118","type":"CDSView"},{"attributes":{"coordinates":null,"data_source":{"id":"1193"},"glyph":{"id":"1196"},"group":null,"hover_glyph":null,"muted_glyph":{"id":"1198"},"nonselection_glyph":{"id":"1197"},"selection_glyph":{"id":"1201"},"view":{"id":"1200"}},"id":"1199","type":"GlyphRenderer"},{"attributes":{"children":[{"id":"1012"},{"id":"1022"},{"id":"1159"}],"margin":[0,0,0,0],"name":"139923987439520","sizing_mode":"stretch_both","tags":["main"]},"id":"1011","type":"Row"},{"attributes":{"coordinates":null,"group":null,"text":"Outgoing commuters by Region of destination","text_color":"#2B2B2B","text_font":"Open Sans, sans-serif","text_font_size":"1.15em"},"id":"1223","type":"Title"},{"attributes":{"bottom":{"value":0},"fill_alpha":{"value":0.7},"fill_color":{"value":"#006C97"},"hatch_alpha":{"value":0.7},"hatch_color":{"value":"#006C97"},"hatch_scale":{"value":12.0},"hatch_weight":{"value":1.0},"line_alpha":{"value":0.7},"line_cap":{"value":"butt"},"line_color":"rgba(0, 0, 0, 0)","line_dash":{"value":[]},"line_dash_offset":{"value":0},"line_join":{"value":"bevel"},"line_width":{"value":1},"top":{"field":"commuters"},"width":{"value":0.8},"x":{"field":"den_reg_o"}},"id":"1201","type":"VBar"},{"attributes":{},"id":"1064","type":"AllLabels"},{"attributes":{},"id":"1232","type":"CategoricalTicker"},{"attributes":{},"id":"1203","type":"CategoricalTickFormatter"},{"attributes":{},"id":"1239","type":"PanTool"},{"attributes":{"css_classes":["loader","light"],"height":20,"margin":[5,10,5,10],"name":"busy_indicator","sizing_mode":"fixed","width":20},"id":"1010","type":"panel.models.markup.HTML"},{"attributes":{},"id":"1157","type":"UnionRenderers"},{"attributes":{"axis":{"id":"1234"},"coordinates":null,"dimension":1,"grid_line_alpha":0.25,"grid_line_color":null,"group":null,"ticker":null},"id":"1237","type":"Grid"},{"attributes":{},"id":"1158","type":"Selection"},{"attributes":{},"id":"1147","type":"EdgesAndLinkedNodes"},{"attributes":{},"id":"1235","type":"BasicTicker"},{"attributes":{"line_alpha":{"value":0.2},"line_color":{"field":"edge_color"},"line_width":{"field":"edge_line_width"},"xs":{"field":"xs"},"ys":{"field":"ys"}},"id":"1133","type":"MultiLine"},{"attributes":{},"id":"1206","type":"BasicTickFormatter"},{"attributes":{},"id":"1240","type":"WheelZoomTool"},{"attributes":{"source":{"id":"1121"}},"id":"1135","type":"CDSView"},{"attributes":{},"id":"1238","type":"SaveTool"},{"attributes":{"fill_alpha":{"value":0.2},"fill_color":{"value":"white"},"hatch_alpha":{"value":0.2},"hatch_color":{"value":"white"},"line_alpha":{"value":0.2},"line_color":{"value":"#2F4F4F"},"marker":{"field":"node_marker"},"size":{"field":"node_size"}},"id":"1126","type":"Scatter"},{"attributes":{"overlay":{"id":"1243"}},"id":"1241","type":"BoxZoomTool"},{"attributes":{"line_alpha":{"value":0.1},"line_color":{"value":"#2F4F4F"},"line_width":{"value":1.5},"xs":{"field":"xs"},"ys":{"field":"ys"}},"id":"1115","type":"MultiLine"},{"attributes":{},"id":"1242","type":"ResetTool"},{"attributes":{"line_alpha":{"value":0.7},"line_color":{"field":"edge_color"},"line_width":{"field":"edge_line_width"},"xs":{"field":"xs"},"ys":{"field":"ys"}},"id":"1131","type":"MultiLine"},{"attributes":{"bottom_units":"screen","coordinates":null,"fill_alpha":0.5,"fill_color":"lightgrey","group":null,"left_units":"screen","level":"overlay","line_alpha":1.0,"line_color":"black","line_dash":[4,4],"line_width":2,"right_units":"screen","syncable":false,"top_units":"screen"},"id":"1243","type":"BoxAnnotation"},{"attributes":{"fill_alpha":{"value":0.2},"fill_color":{"value":"#30a2da"},"hatch_alpha":{"value":0.2},"hatch_color":{"value":"white"},"line_alpha":{"value":0.2},"marker":{"field":"node_marker"},"size":{"field":"node_size"}},"id":"1124","type":"Scatter"},{"attributes":{"data":{"cod_ident":[13,13,13,13,13,13,13,13,13,13,13,13,13,13,13,13,13,13,13,13,13],"commuters":[1,2,4,8,32,39,56,58,61,116,117,145,203,282,657,1050,2991,3039,4176,4882,5406],"den_reg_d":["Calabria","Abruzzo","Lombardia","Basilicata","Abruzzo","Abruzzo","Abruzzo","Abruzzo","Emilia-Romagna","Puglia","Umbria","Toscana","Campania","Abruzzo","Abruzzo","Molise","Abruzzo","Abruzzo","Lazio","Marche","Abruzzo"],"den_reg_o":["Abruzzo","Veneto","Abruzzo","Abruzzo","Toscana","Basilicata","Emilia-Romagna","Umbria","Abruzzo","Abruzzo","Abruzzo","Abruzzo","Abruzzo","Campania","Puglia","Abruzzo","Lazio","Molise","Abruzzo","Abruzzo","Marche"],"edge_color":["#D44E00","#006C97","#D44E00","#D44E00","#006C97","#006C97","#006C97","#006C97","#D44E00","#D44E00","#D44E00","#D44E00","#D44E00","#006C97","#006C97","#D44E00","#006C97","#006C97","#D44E00","#D44E00","#006C97"],"edge_line_width":{"__ndarray__":"AAAAAAAA8D8+8VBWuxLxP5Lq7zDjAfI/ES7JKvFA8z9+KPcQS5n3PwpiACeriPg/mHU6KTeJ+j+X69AUscD6P3uLv1hcEvs/7OK7LmoFAEAJbdLYkg8AQE3/P3o9HgFAJLWfL+4OA0BUHoIG+VgFQL5OGyoOpA1AzpuwZNojEkA3y1dUTLAdQBvyDrpE7B1Ar+MY+VeJIUDxhgE5y/siQAAAAAAAACRA","dtype":"float64","order":"little","shape":[21]},"end":[18,13,3,17,13,13,13,13,8,16,10,9,15,13,13,14,13,13,12,11,13],"ln_cl":["#D44E00","#006C97","#D44E00","#D44E00","#006C97","#006C97","#006C97","#006C97","#D44E00","#D44E00","#D44E00","#D44E00","#D44E00","#006C97","#006C97","#D44E00","#006C97","#006C97","#D44E00","#D44E00","#006C97"],"ln_w":{"__ndarray__":"AAAAAAAA8D8+8VBWuxLxP5Lq7zDjAfI/ES7JKvFA8z9+KPcQS5n3PwpiACeriPg/mHU6KTeJ+j+X69AUscD6P3uLv1hcEvs/7OK7LmoFAEAJbdLYkg8AQE3/P3o9HgFAJLWfL+4OA0BUHoIG+VgFQL5OGyoOpA1AzpuwZNojEkA3y1dUTLAdQBvyDrpE7B1Ar+MY+VeJIUDxhgE5y/siQAAAAAAAACRA","dtype":"float64","order":"little","shape":[21]},"purpose":["Work","Work","Work","Work","Work","Work","Work","Work","Work","Work","Work","Work","Work","Work","Work","Work","Work","Work","Work","Work","Work"],"reg_d":[18,13,3,17,13,13,13,13,8,16,10,9,15,13,13,14,13,13,12,11,13],"reg_o":[13,5,13,13,9,17,8,10,13,13,13,13,13,15,16,13,12,14,13,13,11],"start":[13,5,13,13,9,17,8,10,13,13,13,13,13,15,16,13,12,14,13,13,11],"tp_flow":["Outgoing","Incoming","Outgoing","Outgoing","Incoming","Incoming","Incoming","Incoming","Outgoing","Outgoing","Outgoing","Outgoing","Outgoing","Incoming","Incoming","Outgoing","Incoming","Incoming","Outgoing","Outgoing","Incoming"],"xs":[{"__ndarray__":"4d+di3iIN0FxFvGUTvk3QX1Hfs9aZDhBAXNFO53JOEH9mEbYFSk5QXa5gabEgjlBY9T2panWOUHM6aXWxCQ6Qa35jjgWbTpBCQSyy52vOkHeCA+QW+w6QSwIpoVPIztB8gF3rHlUO0Ey9oEE2n87Qevkxo1wpTtBHs5FSD3FO0HKsf4zQN87QfCP8VB58ztBjmgen+gBPEGmO4Uejgo8QTgJJs9pDTxBQNEAsXsKPEHEkxXEwwE8QcJQZAhC8ztBOAjtffbeO0Enuq8k4cQ7QQ==","dtype":"float64","order":"little","shape":[26]},{"__ndarray__":"IHS/Es0jNEEXCoWH+pU0QaVyYHaJATVBxq1R33lmNUF8u1jCy8Q1QcmbdR9/HDZBqk6o9pNtNkEe1PBHCrg2QSgsTxPi+zZByVbDWBs5N0H8U00Ytm83Qccj7VGynzdBJMaiBRDJN0EXO24zz+s3QZ+CT9vvBzhBvZxG/XEdOEFviVOZVSw4QbZIdq+aNDhBktquP0E2OEEEP/1JSTE4QQp2Yc6yJThBpH/bzH0TOEHUW2tFqvo3QZgKETg42zdB8ovMpCe1N0Hh352LeIg3QQ==","dtype":"float64","order":"little","shape":[26]},{"__ndarray__":"4d+di3iIN0GKKbV8o/I2QVlOLe5eYzZBTE4G4KraNUFjKUBSh1g1QaLf2kT03DRBAnHWt/FnNEGJ3TKrf/kzQTQl8B6ekTNBBEgOE00wM0H6RY2HjNUyQRQfbXxcgTJBUtOt8bwzMkG1Yk/nrewxQT7NUV0vrDFB6xK1U0FyMUG9M3nK4z4xQbQvnsEWEjFB0AYkOdrrMEEQuQoxLswwQXZGUqkSszBBAK/6oYegMEGu8gMbjZQwQYMRbhQjjzBBfAs5jkmQMEGZ4GSIAJgwQQ==","dtype":"float64","order":"little","shape":[26]},{"__ndarray__":"4d+di3iIN0Ewbk+3pNU3QY3iXtWcHzhB9zzM5WBmOEFvfZfo8Kk4QfejwN1M6jhBirBHxXQnOUEroyyfaGE5Qdp7b2somDlBlzoQKrTLOUFi3w7bC/w5QTpqa34vKTpBINslFB9TOkEUMj6c2nk6QRZvtBZinTpBJJKIg7W9OkFCm7ri1No6QW2KSjTA9DpBpV84eHcLO0HsGoSu+h47QUC8LddJLztBoUM18mQ8O0EQsZr/S0Y7QY4EXv/+TDtBGD5/8X1QO0GxXf7VyFA7QQ==","dtype":"float64","order":"little","shape":[26]},{"__ndarray__":"2QhOdG/lMkEFCw7r3TAzQY9UGx34eTNBdOV1Cr7AM0G2vR2zLwU0QVfdEhdNRzRBU0RVNhaHNEGq8uQQi8Q0QWDowaar/zRBcyXs93c4NUHiqWME8G41Qa91KMwTozVB1og6T+PUNUFc45mNXgQ2QT6FRoeFMTZBfm5APFhcNkEZn4es1oQ2QRIXHNgAqzZBZ9b9vtbONkEa3SxhWPA2QSgrqb6FDzdBk8By114sN0FcnYmr40Y3QYHB7ToUXzdBAi2fhfB0N0Hh352LeIg3QQ==","dtype":"float64","order":"little","shape":[26]},{"__ndarray__":"sV3+1chQO0Fhz0yqnAM7QQVbPYykuTpBmgDQe+ByOkEhwAR5UC86QZ2Z24P07jlBCI1UnMyxOUFmmm/C2Hc5QbfBLPYYQTlB+gKMN40NOUEwXo2GNd04QVjTMOMRsDhBcGJ2TSKGOEF9C17FZl84QXzO50rfOzhBbasT3osbOEFQouF+bP43QSWzUS2B5DdB7N1j6cnNN0GmIhizRro3QVOBbor3qTdB8Plmb9ycN0GBjAFi9ZI3QQQ5PmJCjDdBef8ccMOIN0Hh352LeIg3QQ==","dtype":"float64","order":"little","shape":[26]},{"__ndarray__":"c9hiWwnAMkG38Tx+yyUzQUf1nKInhzNBIOOCyB3kM0FEu+7vrTw0QbZ94BjYkDRBcCpYQ5zgNEF2wVVv+is1QcZC2ZzycjVBYa7iy4S1NUFIBHL8sPM1QXpEhy53LTZB9G4iYtdiNkG8g0OX0ZM2Qc6C6s1lwDZBKmwXBpToNkHSP8o/XAw3QcX9Anu+KzdBAqbBt7pGN0GKOAb2UF03QV610DWBbzdBexwhd0t9N0Hkbfe5r4Y3QZmpU/6tizdBl881REaMN0Hh352LeIg3QQ==","dtype":"float64","order":"little","shape":[26]},{"__ndarray__":"KLw9KhM3NUH1rx2/kF81QZsm7OSohjVBGCCpm1usNUFrnFTjqNA1QZmb7ruQ8zVBnB13JRMVNkF2Iu4fMDU2QSmqU6vnUzZBs7SnxzlxNkEWQup0Jo02QVBSG7OtpzZBYOU6gs/ANkFI+0jii9g2QQmURdPi7jZBoa8wVdQDN0EQTgpoYBc3QVhv0guHKTdBdhOJQEg6N0FsOi4GpEk3QTrkwVyaVzdB3xBERCtkN0FcwLS8Vm83QbHyE8YceTdB3adhYH2BN0Hh352LeIg3QQ==","dtype":"float64","order":"little","shape":[26]},{"__ndarray__":"4d+di3iIN0GcxsNotiI3QQ7DY0RawTZBNNV9HmRkNkEO/RH30ws2QaA6IM6ptzVB5I2oo+VnNUHf9qp3hxw1QY51J0qP1TRB8wkeG/2SNEENtI7q0FQ0QdtzebgKGzRBYEnehKrlM0GYNL1PsLQzQYY1FhkciDNBKkzp4O1fM0GCeDanJTwzQZC6/WvDHDNBUhI/L8cBM0HKf/rwMOsyQfcCMLEA2TJB2JvfbzbLMkFvSgkt0sEyQbsOrejTvDJBvejKoju8MkFz2GJbCcAyQQ==","dtype":"float64","order":"little","shape":[26]},{"__ndarray__":"4d+di3iIN0G8Jq14GtQ3Qd+Zt0tuHThBRjm9BHRkOEHxBL6jK6k4Qef8uSiV6zhBHiGxk7ArOUGdcaPkfWk5QV/ukBv9pDlBaZd5OC7eOUG4bF07ERU6QU5uPCSmSTpBJ5wW8+x7OkFG9uun5as6Qax8vEKQ2TpBWC+Iw+wEO0FJDk8q+y07QYAZEXe7VDtB/FDOqS15O0G+tIbCUZs7QcZEOsEnuztBFAHppa/YO0Gn6ZJw6fM7QYD+NyHVDDxBnj/Yt3IjPEECrXM0wjc8QQ==","dtype":"float64","order":"little","shape":[26]},{"__ndarray__":"4d+di3iIN0ES7L32+l83QW9179DiODdB8nsyGjATN0Gc/4bS4u42QXMA7fn6yzZBbX5kkHiqNkGTee2VW4o2Qd/xhwqkazZBVOcz7lFONkHzWfFAZTI2QbpJwALeFzZBqbagM7z+NUHAoJLT/+Y1QQAIluKo0DVBaOyqYLe7NUH4TdFNK6g1QbIsCaoEljVBkohSdUOFNUGcYa2v53U1Qc+3GVnxZzVBKYuXcWBbNUGs2yb5NFA1QVepx+9uRjVBLPR5VQ4+NUEovD0qEzc1QQ==","dtype":"float64","order":"little","shape":[26]},{"__ndarray__":"4d+di3iIN0G03d0UCj03QSyU0OLv8zZBRgN29SmtNkEDK85MuGg2QWUL2eiaJjZBZ6SWydHmNUEP9gbvXKk1QVgAKlk8bjVBR8P/B3A1NUHYPoj79/40QQ1zwzPUyjRB5F+xsASZNEFeBVJyiWk0QXxjpXhiPDRBPHqrw48RNEGgSWRTEekzQajRzyfnwjNBUhLuQBGfM0GhC7+ej30zQZK9QkFiXjNBJih5KIlBM0FeS2JUBCczQTkn/sTTDjNBuLtMevf4MkHZCE50b+UyQQ==","dtype":"float64","order":"little","shape":[26]},{"__ndarray__":"4d+di3iIN0EzmgGaErg3QYciVlAi5TdB13ibrqcPOEEnndG0ojc4QXiP+GITXThBxk8Qufl/OEET3hi3VaA4QV46El0nvjhBqmT8qm7ZOEH1XNegK/I4QT8joz5eCDlBh7dfhAYcOUHOGQ1yJC05QRRKqwe4OzlBW0g6RcFHOUGgFLoqQFE5QeSuKrg0WDlBJxeM7Z5cOUFpTd7Kfl45QapRIVDUXTlB6iNVfZ9aOUEpxHlS4FQ5QWcyj8+WTDlBpW6V9MJBOUHheIzBZDQ5QQ==","dtype":"float64","order":"little","shape":[26]},{"__ndarray__":"4XiMwWQ0OUGNviizygQ5QTw21Py61zhB69+OnjWtOEGZu1iYOoU4QU3JMerJXzhB/ggalOM8OEGwehGWhxw4QWMeGPC1/jdBGPQtom7jN0HO+1Kssco3QYU1hw5/tDdBPKHKyNagN0H0Ph3buI83Qa0Of0UlgTdBZxDwBxx1N0EiRHAinWs3Qd6p/5SoZDdBnEGeXz5gN0FaC0yCXl43QRkHCf0IXzdB2DTVzz1iN0GZlLD6/Gc3QVsmm31GcDdBHeqUWBp7N0Hh352LeIg3QQ==","dtype":"float64","order":"little","shape":[26]},{"__ndarray__":"Aq1zNMI3PEElZmRHIOw7QQXzWXTMojtBnVNUu8ZbO0Hvh1McDxc7Qf+PV5el1DpBxWtgLIqUOkFGG27bvFY6QYOegKQ9GzpBefWXhwziOUEqILSEKas5QZce1ZuUdjlBvPD6zE1EOUGbliUYVRQ5QTYQVX2q5jhBi12J/E27OEGafsKVP5I4QWNzAEl/azhB5jtDFg1HOEEk2Ir96CQ4QR1I1/4SBThBz4soGovnN0E8o35PUcw3QWOO2Z5lszdBRU05CMicN0Hh352LeIg3QQ==","dtype":"float64","order":"little","shape":[26]},{"__ndarray__":"4d+di3iIN0FAm8oTlqE3QT8PzdCuuTdB2TulwsLQN0ERIVPp0eY3Qeu+1kTc+zdBXxUw1eEPOEFyJF+a4iI4QSHsY5TeNDhBcGw+w9VFOEFcpe4myFU4QeaWdL+1ZDhBDUHQjJ5yOEHSowGPgn84QTa/CMZhizhBNpPlMTyWOEHWH5jSEaA4QRJlIKjiqDhB7GJ+sq6wOEFkGbLxdbc4QXqIu2U4vThBLbCaDvbBOEGAkE/srsU4QW4p2v5iyDhB/Ho6RhLKOEEnhXDCvMo4QQ==","dtype":"float64","order":"little","shape":[26]},{"__ndarray__":"6RJwJoeuNUFVgatj9bs1QU54N4rZyTVB0vcTmjPYNUHj/0CTA+c1QYGQvnVJ9jVBq6mMQQUGNkFgS6v2NhY2QaJ1GpXeJjZBcSjaHPw3NkHMY+qNj0k2QbQnS+iYWzZBJnT8KxhuNkEmSf5YDYE2QbKmUG94lDZByozzblmoNkFu++ZXsLw2QaDyKip90TZBXXK/5b/mNkGmeqSKePw2QXwL2hinEjdB3SRgkEspN0HMxjbxZUA3QUfxXTv2VzdBTqTVbvxvN0Hh352LeIg3QQ==","dtype":"float64","order":"little","shape":[26]},{"__ndarray__":"J4VwwrzKOEHHyUM6n7E4QcpVQX2GmThBLilpi3KCOEHzQ7tkY2w4QR+mNwlZVzhBqk/eeFNDOEGWQK+zUjA4QeZ4qrlWHjhBmPjPil8NOEGsvx8nbf03QSTOmY5/7jdB+iM+wZbgN0E1wQy/stM3QdKlBYjTxzdB0tEoHPm8N0EyRXZ7I7M3Qfb/7aVSqjdBHAKQm4aiN0GkS1xcv5s3QY7cUuj8lTdB2rRzPz+RN0GI1L5hho03QZk7NE/SijdBDOrTByOJN0Hh352LeIg3QQ==","dtype":"float64","order":"little","shape":[26]},{"__ndarray__":"4d+di3iIN0F0cWJOCns3QX161icmbTdB+Pr5F8xeN0Hm8swe/E83QUtiTzy2QDdBIEmBcPowN0Fqp2K7yCA3QSd98xwhEDdBWcozlQP/NkH/jiMkcO02QRnLwslm2zZBpX4RhufINkGkqQ9Z8rU2QRhMvUKHojZBAGYaQ6aONkFc9yZaT3o2QSsA44eCZTZBboBOzD9QNkEkeGknhzo2QU7nM5lYJDZB7M2tIbQNNkH+K9fAmfY1QYMBsHYJ3zVBfU44QwPHNUHpEnAmh641QQ==","dtype":"float64","order":"little","shape":[26]},{"__ndarray__":"4d+di3iIN0G5X+O5nmI3Qf/K2q3jPjdBryGEZ0cdN0HJY9/myf02QVOR7Ctr4DZBRKqrNivFNkGirhwHCqw2QWueP50HlTZBoXkU+SOANkFCQJsaX202QU/y0wG5XDZBx4++rjFONkGqGFshyUE2QfmMqVl/NzZBtOypV1QvNkHaN1wbSCk2QWxuwKRaJTZBapDW84sjNkHSnZ4I3CM2QaiWGONKJjZB53pEg9gqNkGSSiLphDE2QaoFshRQOjZBLazzBTpFNkEbPue8QlI2QQ==","dtype":"float64","order":"little","shape":[26]},{"__ndarray__":"Gz7nvEJSNkFCvqGOHHg2Qf5SqprXmzZBTfwA4XO9NkExuqVh8dw2QayMmBxQ+jZBuHPZEZAVN0Fab2hBsS43QZB/RauzRTdBW6RwT5daN0G63ektXG03Qa8rsUYCfjdBNo7GmYmMN0FSBSon8pg3QQKR2+47ozdBSDHb8GarN0Ei5igtc7E3QZCvxKNgtTdBko2uVC+3N0EqgOY/37Y3QVaHbGVwtDdBFKNAxeKvN0Fp02JfNqk3QVIY0zNroDdBz3GRQoGVN0Hh352LeIg3QQ==","dtype":"float64","order":"little","shape":[26]}],"ys":[{"__ndarray__":"qRN1YJ7RU0EYKy7F8MlTQcuZqRNlwVNBxl/nS/u3U0EHfedts61TQZHxqXmNolNBXb0ub4mWU0Fz4HVOp4lTQc1afxfne1NBbyxLykhtU0FWVdlmzF1TQYXVKe1xTVNB+aw8XTk8U0G02xG3IipTQbVhqfotF1NB/T4DKFsDU0GMcx8/qu5SQWD//T8b2VJBeuKeKq7CUkHcHAL/YqtSQYSuJ705k1JBcZcPZTJ6UkGm17n2TGBSQSFvJnKJRVJB411V1+cpUkHqo0YmaA1SQQ==","dtype":"float64","order":"little","shape":[26]},{"__ndarray__":"9C+M/r7WVUEC0NpzZspVQZKR2AFcvVVBoHSFqJ+vVUEueeFnMaFVQUCf7D8RklVBzuamMD+CVUHeTxA6u3FVQW7aKFyFYFVBfobwlp1OVUEQVGfqAzxVQSFDjVa4KFVBslNi27oUVUHDheZ4CwBVQVTZGS+q6lRBZ078/ZbUVEH55I3l0b1UQQydzuVaplRBnna+/jGOVEGycV0wV3VUQUWOq3rKW1RBWMyo3YtBVEHsK1VZmyZUQQCtsO34ClRBlU+7mqTuU0GpE3VgntFTQQ==","dtype":"float64","order":"little","shape":[26]},{"__ndarray__":"qRN1YJ7RU0FCchwYFNVTQbVs5KH12VNBAgPN/ULgU0EqNdYr/OdTQS0DACwh8VNBB21K/rH7U0G+crWirgdUQU8UQRkXFVRBuVHtYesjVEH9Krp8KzRUQR2gp2nXRVRBFrG1KO9YVEHpXeS5cm1UQZamMx1ig1RBHYujUr2aVEF+CzRahLNUQbon5TO3zVRB0N+231XpVEHAM6ldYAZVQYwjvK3WJFVBL6/vz7hEVUGu1kPEBmZVQQaauIrAiFVBOvlNI+asVUFH9AOOd9JVQQ==","dtype":"float64","order":"little","shape":[26]},{"__ndarray__":"qRN1YJ7RU0Gmyh1w59BTQUvmQDBqz1NBmmbeoCbNU0GRS/bBHMpTQTWViJNMxlNBfUOVFbbBU0FxVhxIWbxTQQ7OHSs2tlNBVKqZvkyvU0FD648CnadTQd2QAPcmn1NBHpvrm+qVU0EIClHx54tTQZ3dMPcegVNB2hWLrY91U0HAsl8UOmlTQVC0riseXFNBiRp48ztOU0Fs5btrkz9TQfcUepQkMFNBK6mybe8fU0EIomX38w5TQZD/kjEy/VJBv8E6HKrqUkGZ6Fy3W9dSQQ==","dtype":"float64","order":"little","shape":[26]},{"__ndarray__":"eqx/15WHVEHjiPzCs4tUQdtyoJPejlRBXWprSRaRVEFsb13kWpJUQQqCdmSsklRBMqK2yQqSVEHnzx0UdpBUQSoLrEPujVRB+FNhWHOKVEFVqj1SBYZUQT4OQTGkgFRBs39r9U96VEG0/ryeCHNUQUKLNS3OalRBXiXVoKBhVEEGzZv5f1dUQTuCiTdsTFRB/ESeWmVAVEFKFdpiazNUQSbzPFB+JVRBjN7GIp4WVEGA13faygZUQQHeT3cE9lNBEPJO+UrkU0GpE3VgntFTQQ==","dtype":"float64","order":"little","shape":[26]},{"__ndarray__":"mehct1vXUkGbMbSnEthSQfgVkeeP2VJBqJXzdtPbUkGwsNtV3d5SQRBnSYSt4lJBxbg8AkTnUkHQpbXPoOxSQTQutOzD8lJB7lE4Wa35UkH/EEIVXQFTQWdr0SDTCVNBJGHmew8TU0E58oAmEh1TQaUeoSDbJ1NBaOZGamozU0GCSXIDwD9TQfJHI+zbTFNBueFZJL5aU0HXFhasZmlTQUznV4PVeFNBF1MfqgqJU0E5WmwgBppTQbL8PubHq1NBgzqX+0++U0GpE3VgntFTQQ==","dtype":"float64","order":"little","shape":[26]},{"__ndarray__":"jvN2qT4pVUEQBLIZQSdVQeKyTcZIJFVBAABKr1UgVUFs66bUZxtVQSh1ZDZ/FVVBMJ2C1JsOVUGGYwGvvQZVQSrI4MXk/VRBHcsgGRH0VEFebMGoQulUQeyrwnR53VRBx4kkfbXQVEHxBefB9sJUQWogCkM9tFRBL9mNAImkVEFEMHL62ZNUQaYltzAwglRBVLlco4tvVEFS62JS7FtUQZ67yT1SR1RBOCqRZb0xVEEfN7nJLRtUQVTiQWqjA1RB2CsrRx7rU0GpE3VgntFTQQ==","dtype":"float64","order":"little","shape":[26]},{"__ndarray__":"nmWr5bI+VEEyARM/CEBUQTkXcBHkQFRBr6fCXEZBVEGWsgohL0FUQfA3SF6eQFRBuTd7FJQ/VEH0saNDED5UQaCmwesSPFRBvRXVDJw5VEFM/92mqzZUQUxj3LlBM1RBvEHQRV4vVEGemrlKAStUQfBtmMgqJlRBtbtsv9ogVEHqgzYvERtUQZDG9RfOFFRBp4OqeREOVEEvu1RU2wZUQSlt9Kcr/1NBk5mJdAL3U0FvQBS6X+5TQbthlHhD5VNBe/0JsK3bU0GpE3VgntFTQQ==","dtype":"float64","order":"little","shape":[26]},{"__ndarray__":"qRN1YJ7RU0EmAzrwm9NTQVVUnkOU1lNBNweiWofaU0HKG0U1dd9TQRGSh9Nd5VNBCGppNUHsU0Gyo+paH/RTQQ0/C0T4/FNBGjzL8MsGVEHamiphmhFUQU1bKZVjHVRBcH3HjCcqVEFGAQVI5jdUQc7m4cafRlRBCC5eCVRWVEH01nkPA2dUQZLhNNmseFRB4k2PZlGLVEHlG4m38J5UQZpLIsyKs1RBAN1apB/JVEEY0DJAr99UQeIkqp8591RBX9vAwr4PVUGO83apPilVQQ==","dtype":"float64","order":"little","shape":[26]},{"__ndarray__":"qRN1YJ7RU0HDmL+t7dVTQU2m0l1H2VNBRTyucKvbU0GvWlLmGd1TQYsBv76S3VNB0zD0+RXdU0GN6PGXo9tTQbYouJg72VNBUPFG/N3VU0FaQp7CitFTQdQbvutBzFNBvn2mdwPGU0EYaFdmz75TQeDa0LeltlNBGtYSbIatU0HEWR2DcaNTQd5l8PxmmFNBaPqL2WaMU0FiF/AYcX9TQcy8HLuFcVNBpeoRwKRiU0HuoM8nzlJTQajfVfIBQlNB06akH0AwU0Fs9ruviB1TQQ==","dtype":"float64","order":"little","shape":[26]},{"__ndarray__":"qRN1YJ7RU0EUeA0HSdBTQQ9isDRtz1NBmNFd6QrPU0GwxhUlIs9TQVlB2Oeyz1NBjkGlMb3QU0FTx3wCQdJTQabSXlo+1FNBiWNLObXWU0H7eUKfpdlTQfwVRIwP3VNBizdQAPPgU0Gp3mb7T+VTQVYLiH0m6lNBkr2zhnbvU0Fc9ekWQPVTQbeyKi6D+1NBoPV1zD8CVEEXvsvxdQlUQR4MLJ4lEVRBs9+W0U4ZVEHYOAyM8SFUQYsXjM0NK1RBzXsWlqM0VEGeZavlsj5UQQ==","dtype":"float64","order":"little","shape":[26]},{"__ndarray__":"qRN1YJ7RU0FAN/h0gM1TQUlNVKRVylNBxlWJ7h3IU0G1UJdT2cZTQRs+ftOHxlNB8R0+binHU0E78NYjvshTQfi0SPRFy1NBKWyT38DOU0HOFbflLtNTQeaxswaQ2FNBcECJQuTeU0FuwTeZK+ZTQeA0vwpm7lNBxZofl5P3U0Ec81g+tAFUQeg9awDIDFRBJntW3c4YVEHZqhrVyCVUQf7Mt+e1M1RBluEtFZZCVEGi6HxdaVJUQSLipMAvY1RBFc6lPul0VEF6rH/XlYdUQQ==","dtype":"float64","order":"little","shape":[26]},{"__ndarray__":"qRN1YJ7RU0HTUvS2yc1TQbRX+mmdyVNBTSKHeRnFU0GbsprlPcBTQaMINa4Ku1NBXiRW03+1U0HTBf5Una9TQfysLDNjqVNB3xnibdGiU0F3TB4F6JtTQcdE4fimlFNBzAIrSQ6NU0GKhvv1HYVTQf3PUv/VfFNBKN8wZTZ0U0EKtJUnP2tTQaJOgUbwYVNB8q7zwUlYU0H41OyZS05TQbbAbM71Q1NBKXJzX0g5U0FU6QBNQy5TQTcmFZfmIlNBzyiwPTIXU0Ef8dFAJgtTQQ==","dtype":"float64","order":"little","shape":[26]},{"__ndarray__":"H/HRQCYLU0H0sVLq+g5TQRStTDcnE1NBe+K/J6sXU0ErUqy7hhxTQSf8EfO5IVNBauDwzUQnU0H1/khMJy1TQcpXGm5hM1NB6epkM/M5U0FRuCic3EBTQQPAZagdSFNB/AEcWLZPU0E/fkurpldTQco09KHuX1NBoCUWPI5oU0G+ULF5hXFTQSa2xVrUelNB1lVT33qEU0HQL1oHeY5TQRNE2tLOmFNBnpLTQXyjU0FzG0ZUga5TQZHeMQreuVNB+duWY5LFU0GpE3VgntFTQQ==","dtype":"float64","order":"little","shape":[26]},{"__ndarray__":"bPa7r4gdU0FScXFiORlTQchjXrLfFVNBz82Cn3sTU0Flr94pDRJTQYwIclGUEVNBQtk8FhESU0GHIT94gxNTQV7heHfrFVNBxBjqE0kZU0G7x5JNnB1TQULuciTlIlNBV4yKmCMpU0H+odmpVzBTQTQvYFiBOFNB+jMepKBBU0FQsBONtUtTQTekQBPAVlNBrQ+lNsBiU0Gz8kD3tW9TQUpNFFWhfVNBcB8fUIKMU0EmaWHoWJxTQWwq2x0lrVNBQ2OM8Oa+U0GpE3VgntFTQQ==","dtype":"float64","order":"little","shape":[26]},{"__ndarray__":"qRN1YJ7RU0EisBdmh9FTQU8Sr2su0VNBMDo7cZPQU0HGJ7x2ts9TQRHbMXyXzlNBD1ScgTbNU0HCkvuGk8tTQSiXT4yuyVNBRGGYkYfHU0EU8dWWHsVTQZlGCJxzwlNB0mEvoYa/U0G/QkumV7xTQWDpW6vmuFNBtlVhsDO1U0HAh1u1PrFTQX5/SroHrVNB8jwuv46oU0EawAbE06NTQfUI1MjWnlNBhBeWzZeZU0HK60zSFpRTQcKF+NZTjlNBcOWY206IU0HRCi7gB4JTQQ==","dtype":"float64","order":"little","shape":[26]},{"__ndarray__":"2GfBjKKtU0FvO/zIn7NTQUp29PQ7uVNBZxiqEHe+U0HGIR0cUcNTQWmSTRfKx1NBTWo7AuLLU0FzqebcmM9TQd1PT6fu0lNBil11YePVU0F40lgLd9hTQauu+aSp2lNBHvJXLnvcU0HUnHOn691TQcyuTBD73lNBCCjjaKnfU0GGCDex9t9TQUhQSOni31NBSv8WEW7fU0GQFaMomN5TQRmT7C9h3VNB5HfzJsnbU0Hxw7cN0NlTQUB3OeR111NB1JF4qrrUU0GpE3VgntFTQQ==","dtype":"float64","order":"little","shape":[26]},{"__ndarray__":"0Qou4AeCU0FYbovaHoJTQSwM9NR3glNBSuRnzxKDU0Gz9ubJ74NTQWtDccQOhVNBbMoGv2+GU0G4i6e5EohTQVGHU7T3iVNBNr0Krx6MU0FmLc2ph45TQeLXmqQykVNBqbxznx+UU0G721eaTpdTQRo1R5W/mlNBxMhBkHKeU0G6lkeLZ6JTQfyeWIaeplNBiOF0gRerU0FhXpx80q9TQYYVz3fPtFNB9QYNcw66U0GwMlZuj79TQbeYqmlSxVNBCzkKZVfLU0GpE3VgntFTQQ==","dtype":"float64","order":"little","shape":[26]},{"__ndarray__":"qRN1YJ7RU0ESQDokoctTQTcFQvgExlNBGmOM3MnAU0G6WRnR77tTQRrp6NV2t1NBNBH76l6zU0EO0k8QqK9TQaQr50VSrFNB+B3Bi12pU0EJqd3hyaZTQdnMPEiXpFNBZInevsWiU0Gu3sJFVaFTQbXM6dxFoFNBeVNThJefU0H7cv87Sp9TQTor7gNen1NBNnwf3NKfU0HxZZPEqKBTQWnoSb3foVNBngNDxnejU0GQt37fcKVTQUAE/QjLp1NBrum9QoaqU0HYZ8GMoq1TQQ==","dtype":"float64","order":"little","shape":[26]},{"__ndarray__":"qRN1YJ7RU0EfhuEqRNVTQbCZQH0p2VNBWk6SV07dU0EepNa5suFTQf6aDaRW5lNB9jI3FjrrU0EJbFMQXfBTQTZGYpK/9VNBfsFjnGH7U0Hf3VcuQwFUQVybPkhkB1RB8vkX6sQNVEGi+eMTZRRUQWyaosVEG1RBUNxT/2MiVEFQv/fAwilUQWhDjgphMVRBmmgX3D45VEHoLpM1XEFUQU+WARe5SVRB0J5igFVSVEFsSLZxMVtUQSKT/OpMZFRB8n417KdtVEHcC2F1QndUQQ==","dtype":"float64","order":"little","shape":[26]},{"__ndarray__":"3AthdUJ3VEFmmfSqnHNUQdaFlVi3b1RBK9FDfpJrVEFme/8bLmdUQYmEyDGKYlRBj+yev6ZdVEF8s4LFg1hUQU7Zc0MhU1RBCF5yOX9NVEGmQX6nnUdUQSuEl418QVRBlCW+6xs7VEHkJfLBezRUQRqFMxCcLVRBNUOC1nwmVEE2YN4UHh9UQR7cR8t/F1RB6ra++aEPVEGe8EKghAdUQTeJ1L4n/1NBtYBzVYv2U0EZ1x9kr+1TQWOM2eqT5FNBlKCg6TjbU0GpE3VgntFTQQ==","dtype":"float64","order":"little","shape":[26]}]},"selected":{"id":"1158"},"selection_policy":{"id":"1157"}},"id":"1121","type":"ColumnDataSource"},{"attributes":{"graph_layout":{"10":[1390355.1650045011,5307083.588586239],"11":[1462850.737903482,5365001.834048238],"12":[1420935.1501476115,5158538.199304543],"13":[1542264.545377724,5195385.507145801],"14":[1624764.7595294209,5113887.502810196],"15":[1651812.7560496854,4992153.012813835],"16":[1849282.2048900728,5010978.745847326],"17":[1790152.8359125669,4939118.86504569],"18":[1819873.1433063836,4732320.598061541],"3":[1087488.532789266,5720542.218991346],"5":[1319885.0732338503,5724923.977306355],"8":[1228809.3569770127,5547258.647885216],"9":[1238383.454315713,5381719.367167586]}},"id":"1122","type":"StaticLayoutProvider"},{"attributes":{"source":{"id":"1120"}},"id":"1128","type":"CDSView"},{"attributes":{"data":{"xs":[{"__ndarray__":"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","dtype":"float64","order":"little","shape":[450]}],"ys":[{"__ndarray__":"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","dtype":"float64","order":"little","shape":[450]}]},"selected":{"id":"1112"},"selection_policy":{"id":"1152"}},"id":"1111","type":"ColumnDataSource"},{"attributes":{"line_alpha":{"value":0.7},"line_color":{"value":"limegreen"},"line_width":{"field":"edge_line_width"},"xs":{"field":"xs"},"ys":{"field":"ys"}},"id":"1132","type":"MultiLine"},{"attributes":{},"id":"1112","type":"Selection"},{"attributes":{"data":{"id":"1008"},"margin":[0,0,0,0],"name":"actions","scripts":{"close_modal":["document.getElementById(&amp;#x27;pn-Modal&amp;#x27;).style.display = &amp;#x27;none&amp;#x27;"],"open_modal":["document.getElementById(&amp;#x27;pn-Modal&amp;#x27;).style.display = &amp;#x27;block&amp;#x27;"]},"subscribed_events":["dom_event"]},"id":"1009","type":"panel.models.reactive_html.ReactiveHTML"},{"attributes":{"fill_color":{"value":"white"},"hatch_color":{"value":"white"},"line_color":{"value":"#2F4F4F"},"marker":{"field":"node_marker"},"size":{"field":"node_size"}},"id":"1123","type":"Scatter"},{"attributes":{"line_alpha":{"value":0.2},"line_color":{"field":"edge_color"},"line_width":{"field":"edge_line_width"},"xs":{"field":"xs"},"ys":{"field":"ys"}},"id":"1130","type":"MultiLine"},{"attributes":{"coordinates":null,"group":null,"level":"glyph","tile_source":{"id":"1106"}},"id":"1109","type":"TileRenderer"},{"attributes":{"line_alpha":{"value":0.7},"line_color":{"field":"edge_color"},"line_width":{"field":"edge_line_width"},"xs":{"field":"xs"},"ys":{"field":"ys"}},"id":"1129","type":"MultiLine"},{"attributes":{},"id":"1207","type":"AllLabels"},{"attributes":{"line_color":{"value":"#2F4F4F"},"line_width":{"value":1.5},"xs":{"field":"xs"},"ys":{"field":"ys"}},"id":"1114","type":"MultiLine"},{"attributes":{"name":"location","reload":false},"id":"1005","type":"panel.models.location.Location"},{"attributes":{"coordinates":null,"data_source":{"id":"1120"},"glyph":{"id":"1123"},"group":null,"hover_glyph":{"id":"1125"},"muted_glyph":{"id":"1126"},"nonselection_glyph":{"id":"1124"},"view":{"id":"1128"}},"id":"1127","type":"GlyphRenderer"},{"attributes":{},"id":"1252","type":"Selection"},{"attributes":{"coordinates":null,"data_source":{"id":"1121"},"glyph":{"id":"1129"},"group":null,"hover_glyph":{"id":"1132"},"muted_glyph":{"id":"1133"},"nonselection_glyph":{"id":"1130"},"selection_glyph":{"id":"1131"},"view":{"id":"1135"}},"id":"1134","type":"GlyphRenderer"},{"attributes":{"dimension":"lat"},"id":"1075","type":"MercatorTickFormatter"},{"attributes":{"dimension":"lat"},"id":"1074","type":"MercatorTicker"},{"attributes":{"tools":[{"id":"1221"},{"id":"1238"},{"id":"1239"},{"id":"1240"},{"id":"1241"},{"id":"1242"}]},"id":"1244","type":"Toolbar"},{"attributes":{"children":[{"id":"1164"}],"margin":[0,0,0,0],"name":"Row00808","sizing_mode":"stretch_both"},"id":"1160","type":"Row"},{"attributes":{},"id":"1145","type":"NodesAndLinkedEdges"},{"attributes":{"data":{"commuters":[4882,4176,1050,203,145,117,116,61,8,4,1],"den_reg_d":["Marche","Lazio","Molise","Campania","Toscana","Umbria","Puglia","Emilia-Romagna","Basilicata","Lombardia","Calabria"]},"selected":{"id":"1252"},"selection_policy":{"id":"1273"}},"id":"1251","type":"ColumnDataSource"},{"attributes":{"axis_label":"","axis_label_standoff":10,"axis_label_text_color":"#2B2B2B","axis_label_text_font":"Open Sans, sans-serif","axis_label_text_font_size":"1.25em","axis_label_text_font_style":"normal","axis_line_alpha":0.1,"axis_line_color":"#2B2B2B","coordinates":null,"formatter":{"id":"1057"},"group":null,"major_label_policy":{"id":"1064"},"major_label_text_color":"#2B2B2B","major_label_text_font":"Open Sans, sans-serif","major_label_text_font_size":"0pt","major_tick_line_alpha":0.5,"major_tick_line_color":null,"minor_tick_line_alpha":0.25,"minor_tick_line_color":null,"ticker":{"id":"1056"}},"id":"1035","type":"LinearAxis"},{"attributes":{},"id":"1031","type":"LinearScale"},{"attributes":{},"id":"1262","type":"AllLabels"},{"attributes":{"fill_alpha":{"value":0.7},"fill_color":{"value":"#D44E00"},"hatch_alpha":{"value":0.7},"hatch_color":{"value":"#D44E00"},"line_alpha":{"value":0.7},"line_color":"rgba(0, 0, 0, 0)","top":{"field":"commuters"},"width":{"value":0.8},"x":{"field":"den_reg_d"}},"id":"1254","type":"VBar"},{"attributes":{"fill_alpha":{"value":0.7},"fill_color":{"value":"#D44E00"},"hatch_alpha":{"value":0.1},"hatch_color":{"value":"#D44E00"},"line_alpha":{"value":0.7},"line_color":"rgba(0, 0, 0, 0)","top":{"field":"commuters"},"width":{"value":0.8},"x":{"field":"den_reg_d"}},"id":"1255","type":"VBar"},{"attributes":{"source":{"id":"1251"}},"id":"1258","type":"CDSView"},{"attributes":{"fill_alpha":{"value":0.2},"fill_color":{"value":"#D44E00"},"hatch_alpha":{"value":0.2},"hatch_color":{"value":"#D44E00"},"line_alpha":{"value":0.2},"line_color":"rgba(0, 0, 0, 0)","top":{"field":"commuters"},"width":{"value":0.8},"x":{"field":"den_reg_d"}},"id":"1256","type":"VBar"},{"attributes":{"coordinates":null,"data_source":{"id":"1251"},"glyph":{"id":"1254"},"group":null,"hover_glyph":null,"muted_glyph":{"id":"1256"},"nonselection_glyph":{"id":"1255"},"selection_glyph":{"id":"1259"},"view":{"id":"1258"}},"id":"1257","type":"GlyphRenderer"},{"attributes":{"bottom":{"value":0},"fill_alpha":{"value":0.7},"fill_color":{"value":"#D44E00"},"hatch_alpha":{"value":0.7},"hatch_color":{"value":"#D44E00"},"hatch_scale":{"value":12.0},"hatch_weight":{"value":1.0},"line_alpha":{"value":0.7},"line_cap":{"value":"butt"},"line_color":"rgba(0, 0, 0, 0)","line_dash":{"value":[]},"line_dash_offset":{"value":0},"line_join":{"value":"bevel"},"line_width":{"value":1},"top":{"field":"commuters"},"width":{"value":0.8},"x":{"field":"den_reg_d"}},"id":"1259","type":"VBar"},{"attributes":{},"id":"1261","type":"CategoricalTickFormatter"},{"attributes":{},"id":"1264","type":"BasicTickFormatter"},{"attributes":{},"id":"1033","type":"LinearScale"},{"attributes":{},"id":"1169","type":"CategoricalScale"},{"attributes":{"background_fill_color":"#ffffff","below":[{"id":"1035"}],"border_fill_alpha":0,"border_fill_color":"#F7F7F7","center":[{"id":"1038"},{"id":"1042"}],"height":300,"left":[{"id":"1039"}],"margin":[5,5,5,5],"min_border_bottom":10,"min_border_left":10,"min_border_right":10,"min_border_top":10,"outline_line_alpha":0.5,"outline_line_color":"#888888","outline_line_width":1,"renderers":[{"id":"1109"},{"id":"1117"},{"id":"1136"}],"sizing_mode":"stretch_both","title":{"id":"1027"},"toolbar":{"id":"1049"},"width":300,"x_range":{"id":"1023"},"x_scale":{"id":"1031"},"y_range":{"id":"1024"},"y_scale":{"id":"1033"}},"id":"1026","subtype":"Figure","type":"Plot"},{"attributes":{"end":1925688.517398629,"reset_end":1925688.517398629,"reset_start":1008812.7672959544,"start":1008812.7672959544,"tags":[[["x","x",null]]]},"id":"1023","type":"Range1d"},{"attributes":{"callback":null,"renderers":[{"id":"1136"}],"tooltips":[["Origin","@den_reg_o"],["Destination","@den_reg_d"],["Commuters","@commuters"]]},"id":"1025","type":"HoverTool"},{"attributes":{"factors":["Marche","Molise","Lazio","Puglia","Campania","Umbria","Emilia-Romagna","Basilicata","Toscana","Veneto"],"tags":[[["den_reg_o","den_reg_o",null]]]},"id":"1161","type":"FactorRange"},{"attributes":{"end":5824184.315230836,"reset_end":5824184.315230836,"reset_start":4633060.26013706,"start":4633060.26013706,"tags":[[["y","y",null]]]},"id":"1024","type":"Range1d"},{"attributes":{"margin":[5,10,5,10],"options":[["13","Abruzzo"],["17","Basilicata"],["18","Calabria"],["15","Campania"],["8","Emilia-Romagna"],["6","Friuli Venezia Giulia"],["12","Lazio"],["7","Liguria"],["3","Lombardia"],["11","Marche"],["14","Molise"],["1","Piemonte"],["16","Puglia"],["20","Sardegna"],["19","Sicilia"],["9","Toscana"],["4","Trentino-Alto Adige"],["10","Umbria"],["2","Valle d'Aosta"],["5","Veneto"]],"sizing_mode":"stretch_width","title":"Region:","value":"13"},"id":"1013","type":"panel.models.widgets.CustomSelect"},{"attributes":{"axis_label":"","axis_label_standoff":10,"axis_label_text_color":"#2B2B2B","axis_label_text_font":"Open Sans, sans-serif","axis_label_text_font_size":"1.25em","axis_label_text_font_style":"normal","axis_line_alpha":0.1,"axis_line_color":"#2B2B2B","coordinates":null,"formatter":{"id":"1075"},"group":null,"major_label_policy":{"id":"1061"},"major_label_text_color":"#2B2B2B","major_label_text_font":"Open Sans, sans-serif","major_label_text_font_size":"0pt","major_tick_line_alpha":0.5,"major_tick_line_color":null,"minor_tick_line_alpha":0.25,"minor_tick_line_color":null,"ticker":{"id":"1074"}},"id":"1039","type":"LinearAxis"},{"attributes":{},"id":"1265","type":"AllLabels"},{"attributes":{"coordinates":null,"group":null,"text":"Incoming and outgoing commuting flows","text_color":"#2B2B2B","text_font":"Open Sans, sans-serif","text_font_size":"1.15em"},"id":"1027","type":"Title"},{"attributes":{"margin":[5,10,5,10],"sizing_mode":"stretch_width","text":"&amp;lt;div style=&amp;quot;font-size: 18pt; color: #2F4F4F&amp;quot;&amp;gt;Outgoing&amp;lt;/div&amp;gt;\n&amp;lt;div style=&amp;quot;font-size: 24pt; color: #2F4F4F&amp;quot;&amp;gt;10763&amp;lt;/div&amp;gt;"},"id":"1018","type":"panel.models.markup.HTML"},{"attributes":{"axis":{"id":"1035"},"coordinates":null,"grid_line_alpha":0.25,"grid_line_color":null,"group":null,"ticker":null},"id":"1038","type":"Grid"},{"attributes":{"end":5946.4,"reset_end":5946.4,"reset_start":0.0,"tags":[[["commuters","commuters",null]]]},"id":"1162","type":"Range1d"},{"attributes":{"axis":{"id":"1039"},"coordinates":null,"dimension":1,"grid_line_alpha":0.25,"grid_line_color":null,"group":null,"ticker":null},"id":"1042","type":"Grid"},{"attributes":{},"id":"1171","type":"LinearScale"},{"attributes":{"children":[{"id":"1160"},{"id":"1218"}],"margin":[0,0,0,0],"name":"Column00860","sizing_mode":"stretch_both"},"id":"1159","type":"Column"},{"attributes":{"bottom_units":"screen","coordinates":null,"fill_alpha":0.5,"fill_color":"lightgrey","group":null,"left_units":"screen","level":"overlay","line_alpha":1.0,"line_color":"black","line_dash":[4,4],"line_width":2,"right_units":"screen","syncable":false,"top_units":"screen"},"id":"1048","type":"BoxAnnotation"},{"attributes":{"active":0,"labels":["Work","Study","Total"],"margin":[5,10,5,10],"sizing_mode":"stretch_width"},"id":"1014","type":"RadioButtonGroup"},{"attributes":{"background_fill_color":"#ffffff","below":[{"id":"1173"}],"border_fill_alpha":0,"border_fill_color":"#F7F7F7","center":[{"id":"1175"},{"id":"1179"}],"height":300,"left":[{"id":"1176"}],"margin":[5,5,5,5],"min_border_bottom":10,"min_border_left":10,"min_border_right":10,"min_border_top":10,"outline_line_alpha":0.5,"outline_line_color":"#888888","outline_line_width":1,"renderers":[{"id":"1199"}],"sizing_mode":"stretch_both","title":{"id":"1165"},"toolbar":{"id":"1186"},"width":300,"x_range":{"id":"1161"},"x_scale":{"id":"1169"},"y_range":{"id":"1162"},"y_scale":{"id":"1171"}},"id":"1164","subtype":"Figure","type":"Plot"},{"attributes":{},"id":"1043","type":"SaveTool"},{"attributes":{},"id":"1044","type":"PanTool"},{"attributes":{"axis_label":"","axis_label_standoff":10,"axis_label_text_color":"#2B2B2B","axis_label_text_font":"Open Sans, sans-serif","axis_label_text_font_size":"1.25em","axis_label_text_font_style":"normal","axis_line_alpha":0.1,"axis_line_color":"#2B2B2B","coordinates":null,"formatter":{"id":"1203"},"group":null,"major_label_policy":{"id":"1204"},"major_label_text_color":"#2B2B2B","major_label_text_font":"Open Sans, sans-serif","major_label_text_font_size":"0pt","major_tick_line_alpha":0.5,"major_tick_line_color":null,"minor_tick_line_alpha":0.25,"minor_tick_line_color":null,"ticker":{"id":"1174"}},"id":"1173","type":"CategoricalAxis"},{"attributes":{"zoom_on_axis":false},"id":"1045","type":"WheelZoomTool"},{"attributes":{"match_aspect":true,"overlay":{"id":"1048"}},"id":"1046","type":"BoxZoomTool"},{"attributes":{"callback":null,"renderers":[{"id":"1199"}],"tooltips":[["Region","@den_reg_o"],["Commuters","@commuters"]]},"id":"1163","type":"HoverTool"},{"attributes":{},"id":"1047","type":"ResetTool"},{"attributes":{"axis":{"id":"1173"},"coordinates":null,"grid_line_alpha":0.25,"grid_line_color":null,"group":null,"ticker":null},"id":"1175","type":"Grid"},{"attributes":{"axis_label":"Commuters","axis_label_standoff":10,"axis_label_text_color":"#2B2B2B","axis_label_text_font":"Open Sans, sans-serif","axis_label_text_font_size":"1.25em","axis_label_text_font_style":"normal","axis_line_alpha":0.1,"axis_line_color":"#2B2B2B","coordinates":null,"formatter":{"id":"1206"},"group":null,"major_label_policy":{"id":"1207"},"major_label_text_color":"#2B2B2B","major_label_text_font":"Open Sans, sans-serif","major_tick_line_alpha":0.5,"major_tick_line_color":"#2B2B2B","minor_tick_line_alpha":0.25,"minor_tick_line_color":"#2B2B2B","ticker":{"id":"1177"}},"id":"1176","type":"LinearAxis"},{"attributes":{"height":0,"margin":[0,0,0,0],"name":"js_area","sizing_mode":"fixed","width":0},"id":"1007","type":"panel.models.markup.HTML"},{"attributes":{"children":[{"id":"1013"},{"id":"1014"},{"id":"1015"},{"id":"1017"},{"id":"1019"},{"id":"1021"}],"margin":[0,0,0,0],"name":"Column00803","sizing_mode":"stretch_height","width":200},"id":"1012","type":"Column"},{"attributes":{"attribution":"&amp;copy; &lt;a href=\"https://www.openstreetmap.org/copyright\"&gt;OpenStreetMap&lt;/a&gt; contributors, &amp;copy; &lt;a href=\"https://cartodb.com/attributions\"&gt;CartoDB&lt;/a&gt;","url":"https://cartodb-basemaps-4.global.ssl.fastly.net/light_all/{Z}/{X}/{Y}.png"},"id":"1106","type":"WMTSTileSource"},{"attributes":{"data":{"commuters":[5406,3039,2991,657,282,58,56,39,32,2],"den_reg_o":["Marche","Molise","Lazio","Puglia","Campania","Umbria","Emilia-Romagna","Basilicata","Toscana","Veneto"]},"selected":{"id":"1194"},"selection_policy":{"id":"1215"}},"id":"1193","type":"ColumnDataSource"},{"attributes":{"children":[{"id":"1016"}],"margin":[0,0,0,0],"name":"Row00786","sizing_mode":"stretch_both"},"id":"1015","type":"Row"},{"attributes":{"coordinates":null,"group":null,"text":"Incoming commuters by Region of origin","text_color":"#2B2B2B","text_font":"Open Sans, sans-serif","text_font_size":"1.15em"},"id":"1165","type":"Title"},{"attributes":{"margin":[5,10,5,10],"sizing_mode":"stretch_width","text":"&amp;lt;div style=&amp;quot;font-size: 18pt; color: #2F4F4F&amp;quot;&amp;gt;Incoming&amp;lt;/div&amp;gt;\n&amp;lt;div style=&amp;quot;font-size: 24pt; color: #2F4F4F&amp;quot;&amp;gt;12562&amp;lt;/div&amp;gt;"},"id":"1016","type":"panel.models.markup.HTML"},{"attributes":{},"id":"1174","type":"CategoricalTicker"},{"attributes":{},"id":"1181","type":"PanTool"},{"attributes":{"margin":[5,10,5,10],"sizing_mode":"stretch_width","text":"&amp;lt;div style=&amp;quot;font-size: 18pt; color: #2F4F4F&amp;quot;&amp;gt;Internal&amp;lt;/div&amp;gt;\n&amp;lt;div style=&amp;quot;font-size: 24pt; color: #2F4F4F&amp;quot;&amp;gt;388642&amp;lt;/div&amp;gt;"},"id":"1020","type":"panel.models.markup.HTML"},{"attributes":{"axis":{"id":"1176"},"coordinates":null,"dimension":1,"grid_line_alpha":0.25,"grid_line_color":null,"group":null,"ticker":null},"id":"1179","type":"Grid"},{"attributes":{},"id":"1177","type":"BasicTicker"},{"attributes":{"children":[{"id":"1018"}],"margin":[0,0,0,0],"name":"Row00793","sizing_mode":"stretch_both"},"id":"1017","type":"Row"},{"attributes":{},"id":"1182","type":"WheelZoomTool"},{"attributes":{},"id":"1180","type":"SaveTool"},{"attributes":{"children":[{"id":"1020"}],"margin":[0,0,0,0],"name":"Row00800","sizing_mode":"stretch_both"},"id":"1019","type":"Row"},{"attributes":{"overlay":{"id":"1185"}},"id":"1183","type":"BoxZoomTool"},{"attributes":{},"id":"1184","type":"ResetTool"},{"attributes":{"data":{"index":{"__ndarray__":"BQAAAAkAAAARAAAACAAAAAoAAAAPAAAAEAAAAAwAAAAOAAAACwAAAA0AAAASAAAAAwAAAA==","dtype":"int32","order":"little","shape":[13]},"node_marker":["circle","circle","circle","circle","circle","circle","circle","circle","circle","circle","square","circle","circle"],"node_size":[7,7,7,7,7,7,7,7,7,7,10,7,7]},"selected":{"id":"1156"},"selection_policy":{"id":"1155"}},"id":"1120","type":"ColumnDataSource"},{"attributes":{"bottom_units":"screen","coordinates":null,"fill_alpha":0.5,"fill_color":"lightgrey","group":null,"left_units":"screen","level":"overlay","line_alpha":1.0,"line_color":"black","line_dash":[4,4],"line_width":2,"right_units":"screen","syncable":false,"top_units":"screen"},"id":"1185","type":"BoxAnnotation"},{"attributes":{"margin":[5,5,5,5],"name":"HTML00780","sizing_mode":"stretch_width","style":{"text-align":"left"},"text":"\n&amp;lt;div&amp;gt;\n  &amp;lt;hr /&amp;gt;\n  &amp;lt;p&amp;gt;A Panel dashboard showing &amp;lt;b style=&amp;quot;color:#006C97;&amp;quot;&amp;gt;incoming&amp;lt;/b&amp;gt;\n     and &amp;lt;b style=&amp;quot;color:#D44E00;&amp;quot;&amp;gt;outgoing&amp;lt;/b&amp;gt; commuting flows\n     for work and study between Italian Regions.&amp;lt;/p&amp;gt;\n  &amp;lt;p&amp;gt;The width of the curves reflects the magnitude of the flows.&amp;lt;/p&amp;gt;\n  &amp;lt;p&amp;gt;\n    &amp;lt;a href=&amp;quot;https://tinyurl.com/3hp5dhk5&amp;quot; target=&amp;quot;_blank&amp;quot;&amp;gt;Commuting data&amp;lt;/a&amp;gt; from the\n    15th Population and Housing Census (Istat, 2011).\n  &amp;lt;/p&amp;gt;\n  &amp;lt;p&amp;gt;\n    &amp;lt;a href=&amp;quot;https://tinyurl.com/3ayyfmsv&amp;quot; target=&amp;quot;_blank&amp;quot;&amp;gt;Administrative data&amp;lt;/a&amp;gt; from\n    Natural Earth.\n  &amp;lt;/p&amp;gt;\n  &amp;lt;hr /&amp;gt;\n&amp;lt;/div&amp;gt;\n"},"id":"1021","type":"panel.models.markup.HTML"},{"attributes":{"children":[{"id":"1026"}],"margin":[0,0,0,0],"name":"Row00865","sizing_mode":"stretch_both"},"id":"1022","type":"Row"},{"attributes":{"tools":[{"id":"1163"},{"id":"1180"},{"id":"1181"},{"id":"1182"},{"id":"1183"},{"id":"1184"}]},"id":"1186","type":"Toolbar"},{"attributes":{},"id":"1273","type":"UnionRenderers"},{"attributes":{"tools":[{"id":"1025"},{"id":"1043"},{"id":"1044"},{"id":"1045"},{"id":"1046"},{"id":"1047"}]},"id":"1049","type":"Toolbar"},{"attributes":{"children":[{"id":"1222"}],"margin":[0,0,0,0],"name":"Row00836","sizing_mode":"stretch_both"},"id":"1218","type":"Row"}],"root_ids":["1005","1007","1009","1010","1011"]},"title":"Commuting flows between Italian Regions","version":"2.4.3"}}
+    </script>
+    <script type="text/javascript">
+      (function() {
+        const fn = function() {
+          Bokeh.safely(function() {
+            (function(root) {
+              function embed_document(root) {
+              const docs_json = document.getElementById('1396').textContent;
+              const render_items = [{"docid":"85809138-9a7c-4b68-876b-23b098725dc8","root_ids":["1005","1007","1009","1010","1011"],"roots":{"1005":"b8dfe4d4-afa0-4a71-b415-f14666c3804d","1007":"73efdff6-f827-487d-9573-6b72bea1e16d","1009":"89e75a44-b663-44aa-a97a-7f22b14f2170","1010":"ac8d827a-3bff-4b47-adfd-cdbb56baa75a","1011":"6ef78c07-6fd4-4a8b-8064-9083527b1b7b"}}];
+              root.Bokeh.embed.embed_items(docs_json, render_items);
+              }
+              if (root.Bokeh !== undefined) {
+                embed_document(root);
+              } else {
+                let attempts = 0;
+                const timer = setInterval(function(root) {
+                  if (root.Bokeh !== undefined) {
+                    clearInterval(timer);
+                    embed_document(root);
+                  } else {
+                    attempts++;
+                    if (attempts > 100) {
+                      clearInterval(timer);
+                      console.log("Bokeh: ERROR: Unable to run BokehJS code because BokehJS library is missing");
+                    }
+                  }
+                }, 10, root)
+              }
+            })(window);
+          });
+        };
+        if (document.readyState != "loading") fn();
+        else document.addEventListener("DOMContentLoaded", fn);
+      })();
+    </script>
+  </body>
+</html>
