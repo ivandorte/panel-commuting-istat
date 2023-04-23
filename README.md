@@ -9,13 +9,11 @@ https://ivandorte.github.io/panel-commuting-istat/commuting2011/app.html
 
 https://sharing.awesome-panel.org/ivandorte/panel-commuting-istat/app.html
 
-A Panel dashboard showing ***Incoming*** and ***Outgoing*** commuting flows for ***Work*** and ***Study*** between Italian Regions.
+A simple Panel dashboard showing ***Incoming*** and ***Outgoing*** commuting flows (Work and Study) between Italian Regions.
 
 The dashboard includes:
 
-- A Graph showing ***Incoming*** and ***Outgoing*** commuting flows for the selected parameters;
-
-- Two bar plots showing the number of ***Incoming*** and ***Outgoing*** commuters by Region for the selected parameters;
+- A Flow map showing ***Incoming*** and ***Outgoing*** commuting flows for the selected parameters;
 
 - 3 numeric indicators: ***Incoming*** commuters, ***Outgoing*** commuters, ***Internal*** Commuters for the selected parameters;
  
@@ -23,7 +21,7 @@ The dashboard includes:
 
 - Commuting data: [Matrici del Pendolarismo (Istat, 2011)](https://www.istat.it/it/archivio/139381)
 
-- Administrative data [Natural Earth](https://www.naturalearthdata.com/downloads/10m-cultural-vectors/10m-admin-1-states-provinces/)
+- Administrative data: [Basi territoriali e variabili censuarie (ISTAT, 2011)](https://www.istat.it/it/archivio/222527)
 
 ### References
 
