@@ -4,10 +4,7 @@
 
 [![License: CC BY-SA 4.0](https://img.shields.io/badge/License-CC%20BY--SA%204.0-lightgrey.svg)](https://creativecommons.org/licenses/by/4.0/)
 
-### Links:
-https://ivandorte.github.io/panel-commuting-istat/commuting2011/app.html
-
-https://sharing.awesome-panel.org/ivandorte/panel-commuting-istat/app.html
+## Description
 
 A simple Panel dashboard showing ***Incoming*** and ***Outgoing*** commuting flows (Work and Study) between Italian Regions.
 
@@ -16,14 +13,20 @@ The dashboard includes:
 - A Flow map showing ***Incoming*** and ***Outgoing*** commuting flows for the selected parameters;
 
 - 3 numeric indicators: ***Incoming*** commuters, ***Outgoing*** commuters, ***Internal*** Commuters for the selected parameters;
- 
-### Data
+
+## Deployed on
+
+- GitHub Pages: https://ivandorte.github.io/panel-commuting-istat/commuting2011/app.html
+
+- Panel Sharing Gallery: https://sharing.awesome-panel.org/ivandorte/panel-commuting-istat/app.html (old)
+
+## Data
 
 - Commuting data: [Matrici del Pendolarismo (Istat, 2011)](https://www.istat.it/it/archivio/139381)
 
 - Administrative data: [Basi territoriali e variabili censuarie (ISTAT, 2011)](https://www.istat.it/it/archivio/222527)
 
-### References
+## References
 
 - [HoloViz](https://holoviz.org/)
 
@@ -39,7 +42,7 @@ The dashboard includes:
 
 - [Markdown Badges](https://github.com/Ileriayo/markdown-badges)
 
-### Authors
+## Authors
 
 - Ivan D'Ortenzio
 
