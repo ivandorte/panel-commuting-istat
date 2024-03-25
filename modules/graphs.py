@@ -28,8 +28,12 @@ def filter_edges(edges, region_code, comm_purpose):
         query = f"(reg_o == {region_code} & interno == 0) |"
         query += f" (reg_d == {region_code} & interno == 0)"
     else:
-        query = f"(reg_o == {region_code} & motivo == '{comm_purpose}' & interno == 0) |"
-        query += f" (reg_d == {region_code} & motivo == '{comm_purpose}' & interno == 0)"
+        query = (
+            f"(reg_o == {region_code} & motivo == '{comm_purpose}' & interno == 0) |"
+        )
+        query += (
+            f" (reg_d == {region_code} & motivo == '{comm_purpose}' & interno == 0)"
+        )
     return edges.query(query)
 
 
@@ -51,14 +55,10 @@ def get_nodes(nodes, edges, region_code, comm_purpose):
     nodes = nodes[["x", "y", "cod_reg"]]
 
     # Assign the node size
-    nodes["size"] = np.where(
-        nodes["cod_reg"] == region_code, MAX_PT_SIZE, MIN_PT_SIZE
-    )
+    nodes["size"] = np.where(nodes["cod_reg"] == region_code, MAX_PT_SIZE, MIN_PT_SIZE)
 
     # Assigns a marker to the nodes
-    nodes["marker"] = np.where(
-        nodes["cod_reg"] == region_code, "square", "circle"
-    )
+    nodes["marker"] = np.where(nodes["cod_reg"] == region_code, "square", "circle")
 
     return nodes
 
@@ -96,9 +96,9 @@ def get_edge_width(flow, min_flow, max_flow):
     according to the magnitude of the flow.
     """
 
-    return MIN_LW + np.power(flow - min_flow, 0.57) * (
-        MAX_LW - MIN_LW
-    ) / np.power(max_flow - min_flow, 0.57)
+    return MIN_LW + np.power(flow - min_flow, 0.57) * (MAX_LW - MIN_LW) / np.power(
+        max_flow - min_flow, 0.57
+    )
 
 
 def get_edges(nodes, edges, region_code, comm_purpose):
@@ -137,9 +137,7 @@ def get_edges(nodes, edges, region_code, comm_purpose):
 
     # Get the Bézier curve
     filt_edges["curve"] = filt_edges.apply(
-        lambda row: get_bezier_curve(
-            row["x_o"], row["y_o"], row["x_d"], row["y_d"]
-        ),
+        lambda row: get_bezier_curve(row["x_o"], row["y_o"], row["x_d"], row["y_d"]),
         axis=1,
     )
 
@@ -202,15 +200,6 @@ def get_flow_map(nodes, edges, region_admin_bounds, region_code, comm_purpose):
     # Get the list of Bézier curves
     curves = region_graph_edges["curve"].to_list()
 
-    # Get the administrative boundary of the selected Region
-    region_admin_bound = region_admin_bounds[
-        (region_admin_bounds["cod_reg"] == region_code)
-    ].to_dict("records")
-
-    # Draw the administrative boundary using hv.Path
-    region_admin_bound_path = hv.Path(region_admin_bound)
-    region_admin_bound_path.opts(color=BLACK_COLOR, line_width=1.0)
-
     # Build a Graph from Edges, Nodes and Bézier curves
     region_flow_graph = hv.Graph(
         (region_graph_edges.drop("curve", axis=1), region_graph_nodes, curves)
@@ -236,10 +225,10 @@ def get_flow_map(nodes, edges, region_admin_bounds, region_code, comm_purpose):
     )
 
     # Compose the flow map
-    flow_map = (
-        hv.element.tiles.CartoLight()
-        * region_admin_bound_path
-        * region_flow_graph
+    positron_ret = hv.Tiles(
+        "https://a.basemaps.cartocdn.com/light_all/{Z}/{X}/{Y}@2x.png",
+        name="Positron (retina)",
     )
+    flow_map = positron_ret * region_flow_graph
 
     return flow_map

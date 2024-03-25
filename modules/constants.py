@@ -7,18 +7,6 @@ INCOMING_COLOR = "rgba(0, 108, 151, 0.75)"
 OUTGOING_COLOR = "rgba(199, 81, 51, 0.75)"
 INTERNAL_COLOR = "rgba(47, 79, 79, 0.55)"
 
-""" CSS that align the text inside the Number indicator:
-https://discourse.holoviz.org/t/how-to-align-multiple-number-within-a-card-in-a-row/4308 """
-
-NUMIND_CSS = """
-    .bk .center_number :first-child{
-    color: white !important;
-    display: flex !important;
-    flex-direction: column;
-    align-items:center;
-    }
-    """
-
 # Dataframes dtypes
 ITA_REGIONS_DTYPES = {
     "cod_reg": "uint8",
@@ -87,10 +75,6 @@ DASH_DESCR = f"""
   <p>
     <a href="https://www.istat.it/it/archivio/139381" target="_blank">Commuting data</a> from the
     15th Population and Housing Census (Istat, 2011).
-  </p>
-  <p>
-    <a href="https://www.istat.it/it/archivio/222527" target="_blank">Administrative boundaries</a> from
-    ISTAT.
   </p>
   <hr />
 </div>

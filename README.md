@@ -16,15 +16,11 @@ The dashboard includes:
 
 ## Deployed on
 
-- GitHub Pages: https://ivandorte.github.io/panel-commuting-istat/commuting2011/app.html
-
-- Panel Sharing Gallery: https://sharing.awesome-panel.org/ivandorte/panel-commuting-istat/app.html
+- HF: https://huggingface.co/spaces/ivn888/Commuting-2011-Italy
 
 ## Data
 
 - Commuting data: [Matrici del Pendolarismo (Istat, 2011)](https://www.istat.it/it/archivio/139381)
-
-- Administrative data: [Basi territoriali e variabili censuarie (ISTAT, 2011)](https://www.istat.it/it/archivio/222527)
 
 ## References
 

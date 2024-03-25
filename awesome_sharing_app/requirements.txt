@@ -1,7 +1,0 @@
-bokeh
-holoviews
-networkx
-numpy
-pandas
-panel
-shapely

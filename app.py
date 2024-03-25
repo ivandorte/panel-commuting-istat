@@ -13,7 +13,6 @@ from modules.constants import (
     ITA_REGIONS,
     ITA_REGIONS_DTYPES,
     NODES_DTYPES,
-    NUMIND_CSS,
 )
 from modules.graphs import get_flow_map
 from modules.indicators import (
@@ -25,11 +24,11 @@ from modules.indicators import (
 # Load the bokeh extension
 hv.extension("bokeh")
 
+# Disable webgl: https://github.com/holoviz/panel/issues/4855
+hv.renderer("bokeh").webgl = False  # Disable Webgl
+
 # Set the sizing mode
 pn.extension(sizing_mode="stretch_width")
-
-# Load the CSS of the numerical indicator
-pn.config.raw_css.append(NUMIND_CSS)
 
 ROOT = pathlib.Path(__file__).parent
 

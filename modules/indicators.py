@@ -23,12 +23,10 @@ def get_incoming_numind(edges, region_code, comm_purpose):
         name="Incoming",
         value=flows,
         default_color=DEFAULT_COLOR,
-        background=INCOMING_COLOR,
+        styles={"background": INCOMING_COLOR, "text-align": "center"},
         title_size=TITLE_SIZE,
         font_size=FONT_SIZE,
         sizing_mode="stretch_width",
-        align="center",
-        css_classes=["center_number"],
     )
 
 
@@ -50,12 +48,11 @@ def get_outgoing_numind(edges, region_code, comm_purpose):
         name="Outgoing",
         value=flows,
         default_color=DEFAULT_COLOR,
-        background=OUTGOING_COLOR,
+        styles={"background": OUTGOING_COLOR, "text-align": "center"},
         title_size=TITLE_SIZE,
         font_size=FONT_SIZE,
         sizing_mode="stretch_width",
         align="center",
-        css_classes=["center_number"],
     )
 
 
@@ -77,10 +74,9 @@ def get_internal_numind(edges, region_code, comm_purpose):
         name="Internal mobility",
         value=flows,
         default_color=DEFAULT_COLOR,
-        background=INTERNAL_COLOR,
+        styles={"background": INTERNAL_COLOR, "text-align": "center"},
         title_size=TITLE_SIZE,
         font_size=FONT_SIZE,
         sizing_mode="stretch_width",
         align="center",
-        css_classes=["center_number"],
     )
