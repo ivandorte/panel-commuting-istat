@@ -165,7 +165,7 @@ def get_edges(nodes, edges, region_code, comm_purpose):
     return filt_edges
 
 
-def get_flow_map(nodes, edges, region_admin_bounds, region_code, comm_purpose):
+def get_flow_map(nodes, edges, region_code, comm_purpose):
     """
     Returns a Graph showing incoming and outgoing commuting flows
     for the selected Region and commuting purpose.

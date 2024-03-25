@@ -11,7 +11,6 @@ from modules.constants import (
     DASH_TITLE,
     EDGES_DTYPES,
     ITA_REGIONS,
-    ITA_REGIONS_DTYPES,
     NODES_DTYPES,
 )
 from modules.graphs import get_flow_map
@@ -44,13 +43,6 @@ nodes_df = pd.read_json(
     os.path.join(ROOT, "data/nodes.json"),
     orient="split",
     dtype=NODES_DTYPES,
-)
-
-# Load the italian regions as a Dataframe
-region_admin_bounds_df = pd.read_json(
-    os.path.join(ROOT, "data/italian_regions.json"),
-    orient="split",
-    dtype=ITA_REGIONS_DTYPES,
 )
 
 # Region selector
@@ -103,7 +95,6 @@ flowmap_bind = pn.bind(
     get_flow_map,
     nodes=nodes_df,
     edges=edges_df,
-    region_admin_bounds=region_admin_bounds_df,
     region_code=region_select,
     comm_purpose=purpose_select,
 )
